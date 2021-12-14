@@ -9,6 +9,9 @@ class Postulante(models.Model):
     presentacion = models.CharField(max_length=100)
     formacion = models.CharField(max_length=100)
 
+    def __str__(self):
+        return f"NOMBRE: {self.nombre} - APELLIDO: {self.apellido}"
+
 
 class Requeridos(models.Model):
     posicion = models.CharField(max_length=40)
