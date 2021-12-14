@@ -1,0 +1,32 @@
+{% extends 'Postulantes/padre.html' %}
+
+{% load static}
+
+    
+
+    {% block contenido %}
+
+    {% if miFormulario.errors %}
+
+    <p>ERROR!!!!!!</p>
+
+    {% endif %}
+
+
+    <form action="/Postulantes/postFormulario" method="POST"> {% csrf_token %}
+
+        <!-- <p>NOMBRE: <input tyoe="text" name="nombre"></p>
+        
+        <p>CATEGORIA: <input tyoe="numbre" name="catEquipo"></p> -->
+        <table>
+
+        {{  miFormulario.as_table   }}
+
+        </table>
+
+        <input type="submit" value="CARGAR POSTULANTE">
+
+
+    </form>
+
+{% endblock %}

@@ -1,3 +1,7 @@
 {%  extends 'Postulantes/padre.html' %}
 
 {%  load static %}
+
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostFormulario' %}">CARGAR POSTULANTE</a>
+{%  endblock    %}
