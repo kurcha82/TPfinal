@@ -10,3 +10,7 @@ def inicio(request):
 def postulantes(request):
 
     return render(request, 'Postulantes/postulantes.html')
+
+def requeridos(request):
+
+    return render(request, 'Postulantes/requeridos.html')

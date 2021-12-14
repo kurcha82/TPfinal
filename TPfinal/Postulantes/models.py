@@ -8,3 +8,10 @@ class Postulante(models.Model):
     telefono = models.IntegerField()
     presentacion = models.CharField(max_length=100)
     formacion = models.CharField(max_length=100)
+
+
+class Requeridos(models.Model):
+    posicion = models.CharField(max_length=40)
+    formacion = models.CharField(max_length=40)
+    situacion = models.BooleanField()
+    propMonetaria = models.IntegerField()
