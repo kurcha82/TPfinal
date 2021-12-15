@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Postulantes.forms import PostFormulario
+from Postulantes.forms import PostFormulario, ReqFormulario
 from Postulantes.models import *
 
 # Create your views here.
@@ -15,6 +15,8 @@ def postulantes(request):
 def requeridos(request):
 
     return render(request, 'Postulantes/requeridos.html')
+
+
 
 def postFormulario(request):
 
@@ -39,3 +41,27 @@ def postFormulario(request):
 
 
     return render(request, 'Postulantes/postFormulario.html', {"miFormulario":miFormulario})
+
+
+def reqFormulario(request):
+
+    if request.method == "POST":
+
+        miFormulario = ReqFormulario(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            entreInst = Requeridos(posicion= informacion["posicion"], descripcion = informacion["descripcion"],formacionReq = informacion["formacionReq"], interno = informacion["interno"], propMonetaria = informacion["propMonetaria"])
+
+            entreInst.save()
+
+            return render(request, 'Postulantes/inicio.html')
+
+    else:
+
+        miFormulario = ReqFormulario()
+
+
+    return render(request, 'Postulantes/reqFormulario.html', {"miFormulario":miFormulario})

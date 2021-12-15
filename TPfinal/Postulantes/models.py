@@ -15,6 +15,10 @@ class Postulante(models.Model):
 
 class Requeridos(models.Model):
     posicion = models.CharField(max_length=40)
-    formacion = models.CharField(max_length=40)
-    situacion = models.BooleanField()
+    descripcion = models.CharField(max_length=400)
+    formacionReq = models.CharField(max_length=40)
+    interno = models.BooleanField()
     propMonetaria = models.IntegerField()
+    
+    def __str__(self):
+        return f"POSICIÓN: {self.posicion} - FORMACIÓN: {self.formacionReq} - REQUIERE SER INTERNO: {self.situacion}"
