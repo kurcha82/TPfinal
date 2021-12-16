@@ -1,4 +1,5 @@
 from django import forms
+import datetime
 
 class PostFormulario(forms.Form):
     nombre = forms.CharField()
@@ -11,7 +12,9 @@ class PostFormulario(forms.Form):
 
 class ReqFormulario(forms.Form):
     posicion = forms.CharField()
+    sector = forms.CharField(max_length=40)
     descripcion = forms.CharField(max_length=400)
     formacionReq = forms.CharField()
-    interno = forms.BooleanField()
+    deLaEmpresa = forms.BooleanField(required=False)
     propMonetaria = forms.IntegerField()
+    fechaPublicacion = forms.DateField(initial=datetime.date.today())

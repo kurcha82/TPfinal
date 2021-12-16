@@ -53,7 +53,7 @@ def reqFormulario(request):
 
             informacion = miFormulario.cleaned_data
 
-            entreInst = Requeridos(posicion= informacion["posicion"], descripcion = informacion["descripcion"],formacionReq = informacion["formacionReq"], interno = informacion["interno"], propMonetaria = informacion["propMonetaria"])
+            entreInst = Requeridos(posicion= informacion["posicion"], sector= informacion["sector"], descripcion = informacion["descripcion"],formacionReq = informacion["formacionReq"], deLaEmpresa = informacion["deLaEmpresa"], propMonetaria = informacion["propMonetaria"], fechaPublicacion = informacion["fechaPublicacion"])
 
             entreInst.save()
 
