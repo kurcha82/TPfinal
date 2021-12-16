@@ -5,29 +5,29 @@ from Postulantes.models import *
 from django.template import loader
 # Create your views here.
 
-def login(self):
-    nom = "gustavo"
+def registro(request):
 
-    diccionario = {"nombre": nom}
+    #obtiene los datos de nombre y categoria del equipo
+    if request.method == "POST":
 
-    plantilla = loader.get_template('login.html')
+        miFormulario = PostFormulario(request.POST)
 
-    documento = plantilla.render(diccionario)
+        if miFormulario.is_valid(): #IMPORTANTE LOS PARENTESIS!!!!
 
-    return HttpResponse(documento)
+            informacion = miFormulario.cleaned_data
+
+            entreInst = Postulante(nombre= informacion["nombre"], apellido= informacion["apellido"], email = informacion["email"], contrasenia = informacion["contrasenia"], confContrasenia = informacion["confContrasenia"], formacion=informacion["formacion"])
+
+            entreInst.save()
+
+            return render(request, 'Postulantes/inicio.html')
+
+    else:
+
+        miFormulario = PostFormulario()
 
 
-def registro(self):
-    nom = "gustavo"
-
-    diccionario = {"nombre": nom}
-
-    plantilla = loader.get_template('registro.html')
-
-    documento = plantilla.render(diccionario)
-
-    return HttpResponse(documento)
-
+    return render(request, 'Postulantes/postFormulario.html', {"miFormulario":miFormulario})
 
 def inicio(request):
 

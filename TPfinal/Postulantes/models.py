@@ -1,6 +1,15 @@
 from django.db import models
 
 # Create your models here.
+
+class Registro(models.Model):
+    nombre = models.CharField(max_length=40)
+    apellido = models.CharField(max_length=40)
+    email = models.EmailField()
+    contrasenia = models.CharField(max_length=40)
+    confContrasenia = models.CharField(max_length=40)
+
+
 class Postulante(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)

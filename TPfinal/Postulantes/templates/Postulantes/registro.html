@@ -1,42 +1,27 @@
-{% extends "login.html" %}
+{%  extends 'Postulantes/padre.html' %}
 
-{% block title %} Inicie sesión {% endblock %}
+{%  load static %}
 
-{% block content %}
+{% block contenido %}
 
-<div class="usuario">
-    <header>
-        <h1>
-            Usuario
-        </h1>
-    </header>
-    <div class="campousr">
-        <h3>Ingrese nuevo usuario</h3>
-        <input type="text">
-    </div>
-    <div class="mailusr">
-        <h3>Ingrese nuevo mail</h3>
-        <input type="email" name="" id="">
-    </div>
-    <div class="campopassword">
-        <h3>Ingrese una contraseña</h3>
-        <input type="password">
-    </div>
-    <div class="campopassword2">
-        <h3>Repita la contraseña</h3>
-        <input type="password">
-    </div>
-    <div class="btnregistro">
-        <button>
-            Registrarme
-        </button>
-    </div>
-    <div class="cancelar">
-        <button>
-            <a href="login.html">Cancelar</a>
-        </button>
-    </div>
-</div>
+{% if miFormulario.errors %}
+
+<p>ERROR!!!!!!</p>
+
+{% endif %}
+
+
+<form action="/Postulantes/reqFormulario" method="POST"> {% csrf_token %}
+
+    <table>
+
+    {{  miFormulario.as_table   }}
+
+    </table>
+
+    <input type="submit" value="REGISTRARSE">
+
+
+</form>
 
 {% endblock %}
-
