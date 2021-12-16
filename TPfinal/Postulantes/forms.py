@@ -1,12 +1,12 @@
 from django import forms
 import datetime
 
-class Registro(forms.Form):
-    nombre = forms.CharField(max_length=40)
-    apellido = forms.CharField(max_length=40)
-    email = forms.EmailField()
-    contrasenia = forms.CharField(max_length=40)
-    confContrasenia = forms.CharField(max_length=40)
+class RegistroForm(forms.Form):
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+    email = forms.CharField()
+    contrasenia = forms.CharField(label="Contraseña")
+    confContrasenia = forms.CharField(label="Confirmar Contraseña")
 
 class PostFormulario(forms.Form):
     nombre = forms.CharField()

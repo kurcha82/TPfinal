@@ -1,0 +1,27 @@
+{%  extends 'Postulantes/padre.html' %}
+
+{%  load static %}
+
+{% block contenido %}
+
+{% if miRegistro.errors %}
+
+<p>ERROR!!!!!!</p>
+
+{% endif %}
+
+
+<form action="/Postulantes/registroForm" method="POST"> {% csrf_token %}
+
+    <table>
+
+    {{  miRegistro.as_table   }}
+
+    </table>
+
+    <input type="submit" value="REGISTRARSE">
+
+
+</form>
+
+{% endblock %}

@@ -6,3 +6,5 @@ from .models import *
 admin.site.register(Postulante)
 
 admin.site.register(Requeridos)
+
+admin.site.register(Registro)

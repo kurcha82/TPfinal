@@ -2,6 +2,12 @@
 
 {%  load static %}
 
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+{%  endblock    %}
+
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">Bienvenido a la INTRANET</div>
 <div class="masthead-subheading">It's Nice To Meet You</div>

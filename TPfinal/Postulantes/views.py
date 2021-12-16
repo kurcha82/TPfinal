@@ -1,33 +1,41 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Postulantes.forms import PostFormulario, ReqFormulario
+from Postulantes.forms import *
 from Postulantes.models import *
 from django.template import loader
 # Create your views here.
 
-def registro(request):
+def registroForm(request):
 
     #obtiene los datos de nombre y categoria del equipo
     if request.method == "POST":
 
-        miFormulario = PostFormulario(request.POST)
+        miRegistro = RegistroForm(request.POST)
 
-        if miFormulario.is_valid(): #IMPORTANTE LOS PARENTESIS!!!!
+        if miRegistro.is_valid(): #IMPORTANTE LOS PARENTESIS!!!!
 
-            informacion = miFormulario.cleaned_data
+            informacion = miRegistro.cleaned_data
 
-            entreInst = Postulante(nombre= informacion["nombre"], apellido= informacion["apellido"], email = informacion["email"], contrasenia = informacion["contrasenia"], confContrasenia = informacion["confContrasenia"], formacion=informacion["formacion"])
+            usuario = Registro(nombre= informacion["nombre"], apellido= informacion["apellido"], email = informacion["email"], contrasenia = informacion["contrasenia"], confContrasenia = informacion["confContrasenia"])
 
-            entreInst.save()
+            usuario.save()
 
             return render(request, 'Postulantes/inicio.html')
 
     else:
 
-        miFormulario = PostFormulario()
+        miRegistro = RegistroForm()
 
 
-    return render(request, 'Postulantes/postFormulario.html', {"miFormulario":miFormulario})
+    return render(request, 'Postulantes/registroForm.html', {"miRegistro":miRegistro})
+
+def registro(request):
+
+    return render(request, 'Postulantes/registro.html')
+
+def ingreso(request):
+
+    return render(request, 'Postulantes/ingreso.html')
 
 def inicio(request):
 

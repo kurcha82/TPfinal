@@ -2,26 +2,11 @@
 
 {%  load static %}
 
-{% block contenido %}
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">REGISTRO</div>
+<div class="masthead-subheading">Complete los campos para registrarse</div>
+{%  endblock %}
 
-{% if miFormulario.errors %}
-
-<p>ERROR!!!!!!</p>
-
-{% endif %}
-
-
-<form action="/Postulantes/reqFormulario" method="POST"> {% csrf_token %}
-
-    <table>
-
-    {{  miFormulario.as_table   }}
-
-    </table>
-
-    <input type="submit" value="REGISTRARSE">
-
-
-</form>
-
-{% endblock %}
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RegistroForm' %}">REGISTRARSE</a>
+{%  endblock    %}
