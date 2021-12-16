@@ -2,8 +2,33 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from Postulantes.forms import PostFormulario, ReqFormulario
 from Postulantes.models import *
-
+from django.template import loader
 # Create your views here.
+
+def login(self):
+    nom = "gustavo"
+
+    diccionario = {"nombre": nom}
+
+    plantilla = loader.get_template('login.html')
+
+    documento = plantilla.render(diccionario)
+
+    return HttpResponse(documento)
+
+
+def registro(self):
+    nom = "gustavo"
+
+    diccionario = {"nombre": nom}
+
+    plantilla = loader.get_template('registro.html')
+
+    documento = plantilla.render(diccionario)
+
+    return HttpResponse(documento)
+
+
 def inicio(request):
 
     return render(request, 'Postulantes/inicio.html')
