@@ -2,6 +2,11 @@
 
 {%  load static %}
 
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">POSTULANTES</div>
+<div class="masthead-subheading">Ingrese sus datos a la base</div>
+{%  endblock %}
+
 {% block boton %}
 <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostFormulario' %}">CARGAR POSTULANTE</a>
 {%  endblock    %}

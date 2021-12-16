@@ -2,6 +2,11 @@
 
 {%  load static %}
 
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">REQUERIDOS</div>
+<div class="masthead-subheading">Realice una búsqueda de personal</div>
+{%  endblock %}
+
 {% block boton %}
 <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'ReqFormulario' %}">CARGAR REQUERIDO</a>
 {%  endblock    %}
