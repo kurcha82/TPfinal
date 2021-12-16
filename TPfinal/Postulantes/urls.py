@@ -8,7 +8,7 @@ urlpatterns = [
     path('requeridos', views.requeridos, name="Requeridos"),
     path('postFormulario', views.postFormulario, name="PostFormulario"),
     path('reqFormulario', views.reqFormulario, name="ReqFormulario"),
-    path('login', views.login, name="Login"),
+    #path('login', views.login, name="Login"),
     path('registro', views.registro, name="Registro"),
 
 ]
