@@ -31,4 +31,4 @@ python manage.py runserver
 
 Así debería verse la página de inicio del sitio web
 
-![](/Tpfinal/ingreso.PNG)
+![](/TPfinal/ingreso.PNG)
