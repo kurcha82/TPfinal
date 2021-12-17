@@ -23,7 +23,7 @@ python manage.py runserver
 - Una vez hecho esto, la consola devolverá una url con un valor numérico. Copiar y pegar ésta en el navegador web y añadir a la misma:
 
 ```
-\Postulante\ingreso
+/Postulante/ingreso
 ```
 ¡¡¡Ya debería poder navegar por el sitio web!!!
 
