@@ -1,5 +1,7 @@
 from django import forms
 import datetime
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class RegistroForm(forms.Form):
     nombre = forms.CharField()
@@ -25,3 +27,10 @@ class ReqFormulario(forms.Form):
     deLaEmpresa = forms.BooleanField(required=False, label="Interno Empresa")
     propMonetaria = forms.IntegerField(label="Propuesta Monetaria")
     fechaPublicacion = forms.DateField(initial=datetime.date.today(), label="Fecha Publicación")
+
+class UserRegisterform(UserCreationForm):
+    username = forms.CharField()
+    email = forms.EmailField()
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Repetir la Contraseña", widget=forms.PasswordInput)
+

@@ -1,12 +1,16 @@
 {%  extends 'Postulantes/padre.html' %}
 
+{%  block titulo    %}
+        <title>GGL SOLUCIONES</title>
+{%  endblock    %}
+
 {%  load static %}
 
 
 
 {% block boton %}
 <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Login' %}">INGRESAR</a>
-<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Registro' %}">REGISTRARSE</a>
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Register' %}">REGISTRARSE</a>
 {%  endblock    %}
 
 

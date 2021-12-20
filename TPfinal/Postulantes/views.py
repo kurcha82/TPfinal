@@ -129,3 +129,20 @@ def loginRequest(request):
     form = AuthenticationForm() #Formulario sin nada para login
 
     return render(request, "Postulantes/login.html", {"form":form} )
+
+def register(request):
+    if request.method == "POST":
+        #form = UserCreationForm(request.POST)
+        form= UserRegisterform(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+
+            form.save()
+
+            return render(request, "Postulantes/inicio.html")
+
+    else:
+        #form= UserCreationForm()
+        form= UserRegisterform()
+
+    return render(request, "Postulantes/register.html", {"form":form})
