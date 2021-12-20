@@ -9,7 +9,7 @@ urlpatterns = [
     path('postFormulario', views.postFormulario, name="PostFormulario"),
     path('reqFormulario', views.reqFormulario, name="ReqFormulario"),
     #path('login', views.login, name="Login"),
-    path('registro', views.registro, name="Registro"),
+    path('registro/', views.registro, name="Registro"),
     path('registroForm', views.registroForm, name="RegistroForm"),
     path('ingreso', views.ingreso, name="Ingreso"),
 
