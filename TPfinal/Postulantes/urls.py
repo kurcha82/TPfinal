@@ -11,6 +11,8 @@ urlpatterns = [
     #path('login', views.login, name="Login"),
     path('registro', views.registro, name="Registro"),
     path('registroForm', views.registroForm, name="RegistroForm"),
-    path('ingreso', views.ingreso, name="Ingreso")
+    path('ingreso', views.ingreso, name="Ingreso"),
+
+    path('login', views.loginRequest, name="Login"),
 
 ]

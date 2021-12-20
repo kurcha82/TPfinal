@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from Postulantes.forms import *
 from Postulantes.models import *
 from django.template import loader
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+
 # Create your views here.
 
 def registroForm(request):
@@ -98,3 +102,30 @@ def reqFormulario(request):
 
 
     return render(request, 'Postulantes/reqFormulario.html', {"miFormulario":miFormulario})
+
+def loginRequest(request):
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username=usuario, password=contra)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, "Postulantes/inicio.html")
+            else:
+                return render(request, "Postulantes/ingreso.html", {"mensaje": "DATOS INCORRECTOS"})
+
+        else:
+            return render(request, "Postulantes/ingreso.html", {"mensaje": "FORMULARIO INCORRECTO"})
+
+
+    form = AuthenticationForm() #Formulario sin nada para login
+
+    return render(request, "Postulantes/login.html", {"form":form} )

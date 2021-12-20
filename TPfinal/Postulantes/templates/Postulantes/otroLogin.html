@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <header>
+        <li>
+            <h1>
+                Bienvenido
+            </h1>
+        </li>
+    </header>
+    <head>
+        <header>
+            <div>
+                <h1>
+                    Ingresa al sistema o Registrate
+                </h1>
+            </div>
+        </header>
+    </head>
+
+
+
+    <section>
+
+        {% block content %}
+        <div class="usuario">
+
+            <div class="campousr">
+                <h3>Usuario</h3>
+                <input type="text">
+            </div>
+            <div class="campopassword">
+                <h3>Contraseña</h3>
+                <input type="password">
+            </div>
+            <div class="btniniciar">
+                <button>
+                    Iniciar sesion
+                </button>
+            </div>
+            <div class="btnregistro">
+                <button>
+                    <a href="registro.html">Registro</a>                    
+                </button>
+            </div>
+            
+        </div>
+        {% endblock %}
+        
+    </section>
+</body>
+</html>

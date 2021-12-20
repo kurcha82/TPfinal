@@ -2,9 +2,14 @@
 
 {%  load static %}
 
-{%  block link  %}
-<li class="nav-item"><a class="nav-link" href= "{% url 'Registro' %}">Registrarse</a></li>
+
+
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Login' %}">INGRESAR</a>
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Registro' %}">REGISTRARSE</a>
 {%  endblock    %}
+
+
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">Bienvenido GGL SOLUCIONES</div>
 <div class="masthead-subheading">Para poder ingresar a la pagina, debera registrarse como usuario. Luego, podrá cargar sus datos para acceder a las postulaciones.</div>
