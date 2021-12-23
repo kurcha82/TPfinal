@@ -5,9 +5,15 @@ from Postulantes.models import *
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin #Para que solo personas REGISTRADAS, puedan acceder a una clase
+from django.contrib.auth.decorators import login_required #DECORADORES
 
 
 # Create your views here.
+def ingreso(request):
+
+    return render(request, 'Postulantes/ingreso.html')
+
 
 def registroForm(request):
 
@@ -33,21 +39,22 @@ def registroForm(request):
 
     return render(request, 'Postulantes/registroForm.html', {"miRegistro":miRegistro})
 
+
 def registro(request):
 
     return render(request, 'Postulantes/registro.html')
 
-def ingreso(request):
 
-    return render(request, 'Postulantes/ingreso.html')
-
+@login_required
 def inicio(request):
 
     return render(request, 'Postulantes/inicio.html')
 
+
 def postulantes(request):
 
     return render(request, 'Postulantes/postulantes.html')
+
 
 def requeridos(request):
 
