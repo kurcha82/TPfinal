@@ -1,0 +1,10 @@
+from django.urls import path
+from Login import views
+
+urlpatterns = [
+
+    path('inicio/', views.inicio, name="Inicio"),
+    path('ingreso', views.ingreso, name="Ingreso"),
+    path('login', views.loginRequest, name="Login"),
+
+]

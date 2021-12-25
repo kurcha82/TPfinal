@@ -4,7 +4,3 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Postulante)
-
-admin.site.register(Requeridos)
-
-admin.site.register(Registro)
