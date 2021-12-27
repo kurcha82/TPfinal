@@ -17,6 +17,14 @@
 <div class="masthead-subheading">Realice una búsqueda de personal</div>
 {%  endblock %}
 
-{% block boton %}
-<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'ReqFormulario' %}">CARGAR REQUERIDO</a>
-{%  endblock    %}
+{% block contenido%}
+
+<form method="post"> {% csrf_token %}
+
+        ¿Estas seguro que quiere eliminar "{{ object }}"? 
+
+        <input type="submit" value="Borrar" />
+        
+
+</form>
+{%  endblock %}

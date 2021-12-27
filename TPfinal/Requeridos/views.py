@@ -3,34 +3,37 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import  CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
-@login_required
+class RequeridosCreacion(CreateView):
+    
+    model = Requeridos
+    template_name = "Requeridos/requeridos_formulario.html"
+    success_url = "./requeridoslist"
+    fields = ["posicion", "sector", "descripcion", "formacionReq", "deLaEmpresa", "propMonetaria", "fechaPublicacion"]
 
-def requeridos(request):
+class RequeridosList(ListView):
+    
+    model = Requeridos
+    template_name = "Requeridos/requeridos_list.html"
 
-    return render(request, 'Requeridos/requeridos.html')
+class RequeridosDetalle(DetailView):
+    
+    model = Requeridos
+    template_name = "Requeridos/Requeridos_detalle.html"
 
-
-def reqFormulario(request):
-
-    if request.method == "POST":
-
-        miFormulario = ReqFormulario(request.POST)
-
-        if miFormulario.is_valid():
-
-            informacion = miFormulario.cleaned_data
-
-            entreInst = Requeridos(posicion= informacion["posicion"], sector= informacion["sector"], descripcion = informacion["descripcion"],formacionReq = informacion["formacionReq"], deLaEmpresa = informacion["deLaEmpresa"], propMonetaria = informacion["propMonetaria"], fechaPublicacion = informacion["fechaPublicacion"])
-
-            entreInst.save()
-
-            return render(request, 'Login/inicio.html')
-
-    else:
-
-        miFormulario = ReqFormulario()
-
-    return render(request, 'Requeridos/reqFormulario.html', {"miFormulario":miFormulario})
+class RequeridosUpdate(UpdateView):
+    
+    model = Requeridos
+    template_name = "Requeridos/Requeridos_formulario.html"
+    success_url = "../requeridoslist"
+    fields = ["posicion", "sector", "descripcion", "formacionReq", "deLaEmpresa", "propMonetaria", "fechaPublicacion"]
+class RequeridosDelete(DeleteView):
+    
+    model = Requeridos
+    template_name = "Requeridos/Requeridos_borrar.html"
+    success_url = "../requeridoslist"
