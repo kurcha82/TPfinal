@@ -1,0 +1,25 @@
+{%  extends 'Login/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>LOGIN</title>
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">Bienvenido GGL SOLUCIONES</div>
+<div class="masthead-subheading">Modifica los datos de ingreso</div>
+{%  endblock %}
+
+{%  block contenido %}
+<form action="" method="POST">
+
+    {%  csrf_token  %}
+
+    {{miFormulario.as_table}}
+
+<input type="submit" value="CONFIRMAR">
+
+
+</form>
+{%  endblock %}

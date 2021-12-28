@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from Postulantes.forms import *
 from Postulantes.models import *
+from Login.forms import *
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
@@ -47,3 +48,30 @@ def loginRequest(request):
 def inicio(request):
 
     return render(request, 'Login/inicio.html')
+
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditform(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+
+            usuario.save()
+
+            return render(request, "Login/inicio.html")
+
+    else:
+
+        miFormulario = UserEditform(initial={'email':usuario.email})
+
+    return render(request, "Login/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
