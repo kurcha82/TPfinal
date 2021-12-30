@@ -1,0 +1,121 @@
+{%  extends 'Login/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>GGL SOLUCIONES</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'EditarPerfil' %}">Editar Perfil</a></li>
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">GGL SOLUCIONES</div>
+<div class="masthead-subheading">Conozca todo sobre GGL SOLUCIONES</div>
+{%  endblock %}
+
+{%  block about %}
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">GGL SOLUCIONES</h2>
+                <h3 class="section-subheading text-muted">Conozca nuestro equipo de programadores, y fundadores</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'Login/assets/img/portfolio/1.jpg' %}" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">Gustavo Garcia</div>
+                            <div class="portfolio-caption-subheading text-muted">Desarrollo Web Python</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 2-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'Login/assets/img/portfolio/2.jpg' %}" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">Explore</div>
+                            <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 3-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'Login/assets/img/portfolio/3.jpg' %}" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">Finish</div>
+                            <div class="portfolio-caption-subheading text-muted">Identity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+        </div>
+        </div>
+    </section>
+    <!-- About-->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">About</h2>
+                <h3 class="section-subheading text-muted">Nuestra historia</h3>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'Login/assets/img/about/1.jpg' %}" alt="..." /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>Septiembre 2021</h4>
+                            <h4 class="subheading">Los Comienzos</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted">Sin saber las aventuras que les esperan, nuestros tres intrépidos heroes, comienzan el viaje iniciando el curso de Python, en Coder House!!</p></div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'Login/assets/img/about/2.jpg' %}" alt="..." /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>Diciembre 2021</h4>
+                            <h4 class="subheading">Nace una idea</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted">Producto del proyecto del curso, nace la idea de unir a los reclutadores de las empresas, con los empleados internos que buscan nuevos caminos y desafíos, dentro de la misma. Es así, que nace GGL SOLUCIONES!!</p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'Login/assets/img/about/3.jpg' %}" alt="..." /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>Enero 2022</h4>
+                            <h4 class="subheading">Fin de una etapa, comienzo de nuevas Aventuras</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted">Es en este punto, donde nuestros heroes llegan al fina de una etapa, presentando el proyecto final del curso, con GGL SOLUCIONES en pleno funcionamiento. Pero esto solo es el comienzo de nuevas, e innumerables aventuras para estos tres, ahora, Desarrolladores Python!!</p></div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </section>
+{% endblock %}

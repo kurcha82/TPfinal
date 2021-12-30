@@ -7,5 +7,6 @@ urlpatterns = [
     path('ingreso', views.ingreso, name="Ingreso"),
     path('login', views.loginRequest, name="Login"),
     path('editarPerfil', views.editarPerfil, name="EditarPerfil"),
+    path('about', views.about, name="About"),
 
 ]
