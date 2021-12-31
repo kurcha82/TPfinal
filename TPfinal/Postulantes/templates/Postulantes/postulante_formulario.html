@@ -1,0 +1,20 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>POSTULANTE</title>
+{%  endblock    %}
+
+{% block contenido %}
+
+<form method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+
+    <input type="submit" value="CARGAR POSTULANTE" />
+
+    </form>
+
+{% endblock %}

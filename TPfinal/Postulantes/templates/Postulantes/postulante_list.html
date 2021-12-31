@@ -1,0 +1,49 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>REQUERIDOS</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">REQUERIDOS</div>
+<div class="masthead-subheading">Realice una búsqueda de personal</div>
+{%  endblock %}
+
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosNuevo' %}">CARGAR REQUERIDO</a>
+{%  endblock    %}
+
+{% block contenido%}
+
+<p>En esta sección podrás ver la lista de puestos solicitados:</p>
+
+{% for requerido in object_list %}
+
+        
+        
+                <hr size=5>
+        
+
+                        <p>{{ requerido }}</p>  
+        
+                        <p>
+                                <a href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a>
+
+                
+                        </p>
+                </p>
+        
+        
+        
+
+{% endfor %}
+
+{%  endblock %}
