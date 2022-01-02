@@ -6,15 +6,26 @@
         <title>GGL SOLUCIONES</title>
 {%  endblock    %}
 
+
+
 {%  block link  %}
+      
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'EditarPerfil' %}">Editar Perfil</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+
+        
 {%  endblock    %}
 
 {% block presentacion %}
+<ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>  
+
 <div class="masthead-heading text-uppercase">Bienvenido a la INTRANET</div>
 <div class="masthead-subheading">It's Nice To Meet You</div>
 {%  endblock %}

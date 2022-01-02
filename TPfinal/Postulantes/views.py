@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin #Para que solo personas REGISTRADAS, puedan acceder a una clase
 from django.contrib.auth.decorators import login_required #DECORADORES
-
+from django.contrib import messages
 
 # Create your views here.
 
@@ -34,6 +34,8 @@ def postFormulario(request):
             entreInst = Postulante(nombre= informacion["nombre"], apellido= informacion["apellido"], mail = informacion["mail"], telefono = informacion["telefono"], presentacion = informacion["presentacion"], formacion=informacion["formacion"])
 
             entreInst.save()
+
+            messages.add_message(request=request, level=messages.SUCCESS, message="Postulante cargado con éxito")
 
             return render(request, 'Login/inicio.html')
 

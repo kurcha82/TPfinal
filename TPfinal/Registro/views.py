@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
-
+from django.contrib import messages
 
 # Create your views here.
 
@@ -42,8 +42,10 @@ def register(request):
             username = form.cleaned_data['username']
 
             form.save()
-
+            #Mensaje de confirmacion
+            messages.add_message(request=request, level=messages.SUCCESS, message="Registro exitoso")
             return render(request, "Login/inicio.html")
+
 
     else:
         #form= UserCreationForm()
