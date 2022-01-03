@@ -8,7 +8,6 @@
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
 {%  endblock    %}
 
@@ -18,6 +17,8 @@
 {%  endblock %}
 
 {% block contenido%}
+
+<h3>Puesto requerido:</h3>
 
 <p>Posición: {{ requeridos.posicion }}</p>
 <p>Sector: {{ requeridos.sector }}</p>
@@ -31,8 +32,22 @@
         <a href="{% url 'Requeridos' %}">Volver</a>
         <a href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
         <a href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
-        <a href="{% url 'PostFormulario' %}">Postularse</a>
+        <a href="{% url 'PostulanteNuevo' requeridos.id %}">Postularse</a>
 
 </p>
+
+<h3>Postulantes:</h3>
+
+{% for postu in requeridos.postulante_set.all %}
+
+        
+        <p style="border: ridge #41414e 1px;"></p>
+        <p>Nombre: {{postu.nombre}} {{postu.apellido}}</p>
+        <p>Formación: {{postu.formacion}}</p>
+        <p>Presentación: {{postu.presentacion}}</p>
+        <p><a href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p>
+
+
+{% endfor %}
 
 {%  endblock %}

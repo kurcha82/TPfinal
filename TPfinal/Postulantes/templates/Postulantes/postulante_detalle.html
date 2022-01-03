@@ -8,7 +8,6 @@
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
 {%  endblock    %}
 
@@ -19,20 +18,11 @@
 
 {% block contenido%}
 
-<p>POSICIÓN: {{ requeridos.posicion }}</p>
-<p>SECTOR: {{ requeridos.sector }}</p>
-<p>DESCRIPCIÓN: {{ requeridos.descripcion }}</p>
-<p>FORMACIÓN REQUERIDA: {{ requeridos.formacionReq }}</p>
-<p>INTERNO DE LA EMPRESA: {{ requeridos.deLaEmpresa }}</p>
-<p>PROPUESTA MONETARIA: {{ requeridos.propMonetaria }}</p>
-<p>FECHA DE PUBLICACIÓN: {{ requeridos.fechaPublicacion }}</p>
-
-<p>
-        <a href="{% url 'Requeridos' %}">Volver</a>
-        <a href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
-        <a href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
-        <a href="{% url 'PostFormulario' %}">Postularse</a>
-
-</p>
+<p>Nombre: {{postulante.nombre}} {{postulante.apellido}}</p>
+<p>Formación: {{postulante.formacion}}</p>
+<p>Presentación: {{postulante.presentacion}}</p>
+<p>Correo electrónico: {{postulante.mail}}</p>
+<p>Teléfono: {{postulante.telefono}}</p>
+<p><a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
 
 {%  endblock %}

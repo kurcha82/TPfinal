@@ -8,7 +8,6 @@
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
 {%  endblock    %}
 
@@ -32,17 +31,11 @@
                 <p style="border: ridge #41414e 1px;"></p>
         
 
-                        <p>{{ requerido }}</p>  
+                <p>Posición: {{ requerido.posicion }}</p>
+                <p>Formación requerida: {{ requerido.formacionReq }}</p>
+                <p>Propuesta monetaria: {{ requerido.propMonetaria }}</p>
         
-                        <p>
-                                <a href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a>
-
-                
-                        </p>
-                </p>
-        
-        
-        
+                <p> <a href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a> </p>
 
 {% endfor %}
 

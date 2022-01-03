@@ -8,7 +8,7 @@
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'PostulanteNuevo' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
 {%  endblock    %}
 
@@ -18,24 +18,24 @@
 {%  endblock %}
 
 {% block boton %}
-<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosNuevo' %}">CARGAR REQUERIDO</a>
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostulanteNuevo' %}">CARGAR REQUERIDO</a>
 {%  endblock    %}
 
 {% block contenido%}
 
 <p>En esta sección podrás ver la lista de puestos solicitados:</p>
 
-{% for requerido in object_list %}
+{% for postulante in object_list %}
 
         
         
                 <hr size=5>
         
 
-                        <p>{{ requerido }}</p>  
+                        <p>{{ postulante }}</p>  
         
                         <p>
-                                <a href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a>
+                                <a href="{% url 'PostulanteDetalle' postulante.id %}">Detalle</a>
 
                 
                         </p>
