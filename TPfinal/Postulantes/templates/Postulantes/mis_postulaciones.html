@@ -1,0 +1,47 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>MIS POSTULACIONES</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">MIS POSTULACIONES</div>
+<div class="masthead-subheading">aquí puedes ver tus postulaciones</div>
+{%  endblock %}
+
+
+{% block contenido%}
+
+
+{% for postu in user.postulante_set.all %}
+
+        <h3>Puesto:</h3>
+        <p>Posición: {{ postulante.requerido.posicion }}</p>
+        <p>Sector: {{ postulante.requerido.sector }}</p>
+        <p>Descripción: {{ postulante.requerido.descripcion }}</p>
+        <p>Formación requerida: {{ postulante.requerido.formacionReq }}</p>
+        <p>Interno de la empresa: {{ postulante.requerido.deLaEmpresa }}</p>
+        <p>Propuesta monetaria: {{ postulante.requerido.propMonetaria }}</p>
+        <p>Fecha de publicación: {{ postulante.requeridos.fechaPublicacion }}</p>
+        <h3>Mi informacion:</h3>
+        <p>Formación: {{postu.formacion}}</p>
+        <p>Presentación: {{postu.presentacion}}</p>
+
+        <p><a href="{% url 'PostulanteBorrar' postu.id %}">Borrar</a>
+        <a href="{% url 'PostulanteEditar' postu.id %}">Editar</a></p>
+        <p style="border: ridge #41414e 1px;"></p>
+
+<p>Pelota</p>
+
+{% endfor %}
+
+{%  endblock %}

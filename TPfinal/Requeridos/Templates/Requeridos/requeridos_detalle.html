@@ -1,0 +1,55 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>REQUERIDOS</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">REQUERIDOS</div>
+<div class="masthead-subheading">Realice una búsqueda de personal</div>
+{%  endblock %}
+
+{% block contenido%}
+
+<h3>Puesto requerido:</h3>
+
+<p>Posición: {{ requeridos.posicion }}</p>
+<p>Sector: {{ requeridos.sector }}</p>
+<p>Descripción: {{ requeridos.descripcion }}</p>
+<p>Formación requerida: {{ requeridos.formacionReq }}</p>
+<p>Interno de la empresa: {{ requeridos.deLaEmpresa }}</p>
+<p>Propuesta monetaria: {{ requeridos.propMonetaria }}</p>
+<p>Fecha de publicación: {{ requeridos.fechaPublicacion }}</p>
+
+<p>
+        <a href="{% url 'Requeridos' %}">Volver</a>
+        <a href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
+        <a href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
+        <a href="{% url 'PostulanteNuevo' requeridos.id %}">Postularse</a>
+
+</p>
+
+<h3>Postulantes:</h3>
+
+{% for postu in requeridos.postulante_set.all %}
+
+        
+        <p style="border: ridge #41414e 1px;"></p>
+        <p>Nombre: {{postu.nombre}} {{postu.apellido}}
+        <p>Formación: {{postu.formacion}}</p>
+        <p>Presentación: {{postu.presentacion}}</p>
+        <p><a href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p>
+
+
+{% endfor %}
+
+{%  endblock %}

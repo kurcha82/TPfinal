@@ -1,47 +1,44 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from Postulantes.forms import *
-from Postulantes.models import *
-from django.template import loader
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin #Para que solo personas REGISTRADAS, puedan acceder a una clase
-from django.contrib.auth.decorators import login_required #DECORADORES
 from django.contrib import messages
+from .forms import *
+from .models import *
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import  CreateView, UpdateView, DeleteView
+from django.utils.decorators import method_decorator
 
 # Create your views here.
+@method_decorator(login_required, name='dispatch')
+class PostulanteCreacion(CreateView):
+    
+    model = Postulante
+    template_name = "Postulantes/Postulante_formulario.html"
+    success_url = "/Requeridos/requeridoslist"
+    fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
 
+    def form_valid(self, form):
+        form.instance.requerido = Requeridos.objects.get(pk=self.kwargs['pk'])
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
+class MisPostulaciones(DetailView):
+    
+    model = Postulante
+    template_name = "Postulantes/mis_postulaciones.html"
 
-@login_required
+class PostulanteDetalle(DetailView):
+    
+    model = Postulante
+    template_name = "Postulantes/Postulante_detalle.html"
 
+class PostulanteUpdate(UpdateView):
+    
+    model = Postulante
+    template_name = "Postulantes/Postulante_formulario.html"
+    success_url = "/Perfiles/miPerfil"
+    fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
 
-def postulantes(request):
-
-    return render(request, 'Postulantes/postulantes.html')
-
-
-def postFormulario(request):
-
-    #obtiene los datos de nombre y categoria del equipo
-    if request.method == "POST":
-
-        miFormulario = PostFormulario(request.POST)
-
-        if miFormulario.is_valid(): #IMPORTANTE LOS PARENTESIS!!!!
-
-            informacion = miFormulario.cleaned_data
-
-            entreInst = Postulante(nombre= informacion["nombre"], apellido= informacion["apellido"], mail = informacion["mail"], telefono = informacion["telefono"], presentacion = informacion["presentacion"], formacion=informacion["formacion"])
-
-            entreInst.save()
-
-            messages.add_message(request=request, level=messages.SUCCESS, message="Postulante cargado con éxito")
-
-            return render(request, 'Login/inicio.html')
-
-    else:
-
-        miFormulario = PostFormulario()
-
-
-    return render(request, 'Postulantes/postFormulario.html', {"miFormulario":miFormulario})
+class PostulanteDelete(DeleteView):
+    
+    model = Postulante
+    template_name = "Postulantes/Postulante_borrar.html"
+    success_url = "/Perfiles/miPerfil"
