@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -26,6 +27,8 @@ def reqFormulario(request):
             entreInst = Requeridos(posicion= informacion["posicion"], sector= informacion["sector"], descripcion = informacion["descripcion"],formacionReq = informacion["formacionReq"], deLaEmpresa = informacion["deLaEmpresa"], propMonetaria = informacion["propMonetaria"], fechaPublicacion = informacion["fechaPublicacion"])
 
             entreInst.save()
+
+            messages.add_message(request=request, level=messages.SUCCESS, message="Puesto cargado con éxito")
 
             return render(request, 'Login/inicio.html')
 

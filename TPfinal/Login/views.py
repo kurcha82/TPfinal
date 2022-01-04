@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin #Para que solo personas REGISTRADAS, puedan acceder a una clase
 from django.contrib.auth.decorators import login_required #DECORADORES
-
+from django.contrib import messages
 # Create your views here.
 
 def ingreso(request):
@@ -67,6 +67,8 @@ def editarPerfil(request):
             usuario.password2 = informacion['password2']
 
             usuario.save()
+            
+            messages.add_message(request=request, level=messages.SUCCESS, message="Perfil actualizado con éxito")
 
             return render(request, "Login/inicio.html")
 
