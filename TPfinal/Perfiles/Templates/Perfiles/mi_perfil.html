@@ -1,0 +1,50 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>MI PERFIL</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+{%  endblock    %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">{{user.username}}</div>
+<div class="masthead-subheading">Bienvenido a tu perfil</div>
+{%  endblock %}
+
+
+{% block contenido%}
+
+
+<p>
+        <a href="{% url 'MisPostulaciones' user.id%}">Mis postulaciones</a>
+
+
+</p>
+
+{% if  request.user.is_authenticated %}
+        {% if  avatar == 'a' %}
+
+                <p>Usted puede afgregar una foto aquí</p>
+
+        {% else %}
+        
+                <img src="{{ avatar }}" alt="">
+        
+        {% endif %}
+{% endif %}
+<p><a href="{% url 'CambiarFoto' %}">Cambiar Foto </a></p>
+
+<h3>Datos:</h3>
+<p>Usuario: {{user.username}}</p>
+<p>eMail: {{user.email}}</p>
+
+
+
+
+{%  endblock %}

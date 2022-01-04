@@ -8,8 +8,9 @@
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Postulantes' %}">Postulantes</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+
 {%  endblock    %}
 
 {% block presentacion %}
@@ -17,6 +18,13 @@
 <div class="masthead-subheading">Realice una búsqueda de personal</div>
 {%  endblock %}
 
-{% block boton %}
-<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'ReqFormulario' %}">CARGAR REQUERIDO</a>
-{%  endblock    %}
+{% block contenido%}
+
+<p>Nombre: {{postulante.nombre}} {{postulante.apellido}}</p>
+<p>Formación: {{postulante.formacion}}</p>
+<p>Presentación: {{postulante.presentacion}}</p>
+<p>Correo electrónico: {{postulante.mail}}</p>
+<p>Teléfono: {{postulante.telefono}}</p>
+<p><a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
+
+{%  endblock %}

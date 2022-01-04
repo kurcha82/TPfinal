@@ -1,0 +1,26 @@
+{%  extends 'Requeridos/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>POSTULANTE</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+
+{%  endblock    %}
+
+{% block contenido %}
+
+<form method="POST"> {% csrf_token %}
+    
+    {{form.as_p}}
+
+    <input type="submit" value="CARGAR POSTULANTE"/>
+
+    </form>
+
+{% endblock %}
