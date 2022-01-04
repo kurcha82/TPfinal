@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
@@ -12,19 +14,17 @@ class PostulanteCreacion(CreateView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_formulario.html"
-    success_url = "./Login/inicio"
+    success_url = "/Requeridos/requeridoslist"
     fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
 
     def form_valid(self, form):
         form.instance.requerido = Requeridos.objects.get(pk=self.kwargs['pk'])
         form.instance.usuario = self.request.user
         return super().form_valid(form)
-class PostulanteList(ListView):
+class MisPostulaciones(DetailView):
     
     model = Postulante
-    #template_name = "Postulantes/Postulante_list.html"
-    template_name = "Requeridos/Requeridos_detalle.html"
-
+    template_name = "Postulantes/mis_postulaciones.html"
 
 class PostulanteDetalle(DetailView):
     
@@ -35,11 +35,11 @@ class PostulanteUpdate(UpdateView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_formulario.html"
-    success_url = "../Postulantelist"
+    success_url = "/Perfiles/miPerfil"
     fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
 
 class PostulanteDelete(DeleteView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_borrar.html"
-    success_url = "../Postulantelist"
+    success_url = "/Perfiles/miPerfil"

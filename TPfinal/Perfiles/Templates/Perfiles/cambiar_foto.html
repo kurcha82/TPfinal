@@ -3,25 +3,31 @@
 {%  load static %}
 
 {%  block titulo    %}
-        <title>REQUERIDOS</title>
+        <title>MI PERFIL</title>
 {%  endblock    %}
 
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-
 {%  endblock    %}
 
-{% block contenido %}
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">{{user.username}}</div>
+<div class="masthead-subheading">Bienvenido a tu perfil</div>
+{%  endblock %}
 
-<form method="POST"> {% csrf_token %}
+{% block contenido%}
 
-    {{form.as_p}}
+<form method="POST" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+        {{form.as_p}}
 
 
-    <input type="submit" value="CARGAR POSTULANTE" />
+        <input type="submit" value="Nueva">
 
-    </form>
+</form>
 
-{% endblock %}
+
+{%  endblock %}

@@ -5,7 +5,7 @@ from Requeridos.models import Requeridos
 
 class Postulante(models.Model):
 
-    usuario = models.ForeignKey(User, related_name='postulante', on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     mail = models.CharField(max_length=40)

@@ -9,6 +9,8 @@
 {%  block link  %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+
 {%  endblock    %}
 
 {% block presentacion %}
@@ -42,7 +44,7 @@
 
         
         <p style="border: ridge #41414e 1px;"></p>
-        <p>Nombre: {{postu.nombre}} {{postu.apellido}}</p>
+        <p>Nombre: {{postu.nombre}} {{postu.apellido}}
         <p>Formación: {{postu.formacion}}</p>
         <p>Presentación: {{postu.presentacion}}</p>
         <p><a href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p>
