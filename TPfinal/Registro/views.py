@@ -39,7 +39,6 @@ def register(request):
         #form = UserCreationForm(request.POST)
         form= UserRegisterform(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
 
             form.save()
             #Mensaje de confirmacion

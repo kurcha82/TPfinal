@@ -10,17 +10,18 @@
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-
+        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
 {%  endblock    %}
 
 {% block contenido %}
 
 <form method="POST"> {% csrf_token %}
-    
-    {{form.as_p}}
 
-    <input type="submit" value="CARGAR POSTULANTE"/>
+        {{form.as_p}}
 
-    </form>
+        <input type="submit" value="CARGAR POSTULANTE"/>
+
+        </form>
 
 {% endblock %}

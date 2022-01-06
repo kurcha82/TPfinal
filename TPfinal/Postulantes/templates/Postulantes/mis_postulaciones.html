@@ -10,7 +10,8 @@
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-
+        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
 {%  endblock    %}
 
 {% block presentacion %}
@@ -20,6 +21,8 @@
 
 
 {% block contenido%}
+
+
 
 
 {% for postu in user.postulante_set.all %}
@@ -40,7 +43,6 @@
         <a href="{% url 'PostulanteEditar' postu.id %}">Editar</a></p>
         <p style="border: ridge #41414e 1px;"></p>
 
-<p>Pelota</p>
 
 {% endfor %}
 

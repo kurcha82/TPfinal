@@ -20,23 +20,26 @@ class PostulanteCreacion(CreateView):
         form.instance.requerido = Requeridos.objects.get(pk=self.kwargs['pk'])
         form.instance.usuario = self.request.user
         return super().form_valid(form)
+
+@method_decorator(login_required, name='dispatch')
 class MisPostulaciones(DetailView):
     
     model = Postulante
     template_name = "Postulantes/mis_postulaciones.html"
 
+@method_decorator(login_required, name='dispatch')
 class PostulanteDetalle(DetailView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_detalle.html"
-
+@method_decorator(login_required, name='dispatch')
 class PostulanteUpdate(UpdateView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_formulario.html"
     success_url = "/Perfiles/miPerfil"
     fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
-
+@method_decorator(login_required, name='dispatch')
 class PostulanteDelete(DeleteView):
     
     model = Postulante

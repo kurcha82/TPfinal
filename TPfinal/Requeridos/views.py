@@ -15,22 +15,26 @@ class RequeridosCreacion(CreateView):
     success_url = "./requeridoslist"
     fields = ["posicion", "sector", "descripcion", "formacionReq", "deLaEmpresa", "propMonetaria", "fechaPublicacion"]
 
+@method_decorator(login_required, name='dispatch')
 class RequeridosList(ListView):
     
     model = Requeridos
     template_name = "Requeridos/requeridos_list.html"
 
+@method_decorator(login_required, name='dispatch')
 class RequeridosDetalle(DetailView):
     
     model = Requeridos
     template_name = "Requeridos/Requeridos_detalle.html"
 
+@method_decorator(login_required, name='dispatch')
 class RequeridosUpdate(UpdateView):
     
     model = Requeridos
     template_name = "Requeridos/Requeridos_formulario.html"
     success_url = "../requeridoslist"
     fields = ["posicion", "sector", "descripcion", "formacionReq", "deLaEmpresa", "propMonetaria", "fechaPublicacion"]
+@method_decorator(login_required, name='dispatch')
 class RequeridosDelete(DeleteView):
     
     model = Requeridos

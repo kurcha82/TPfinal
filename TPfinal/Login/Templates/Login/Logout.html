@@ -1,0 +1,17 @@
+{%  extends 'Login/padre.html' %}
+
+{%  block titulo    %}
+        <title>GGL SOLUCIONES</title>
+{%  endblock    %}
+
+{%  load static %}
+
+{% block presentacion %}
+<div class="masthead-heading text-uppercase">Hasta la próxima</div>
+<div class="masthead-subheading">Salio con éxito</div>
+{%  endblock %}
+
+
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Login' %}">INGRESAR</a>
+{%  endblock    %}
