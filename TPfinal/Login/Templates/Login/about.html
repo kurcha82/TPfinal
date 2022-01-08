@@ -7,10 +7,18 @@
 {%  endblock    %}
 
 {%  block link  %}
+    {%  if request.user.is_authenticated    %}
         <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'EditarPerfil' %}">Editar Perfil</a></li>
         <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+    {%  endif   %}
+
+    {%  if not request.user.is_authenticated    %}
+
+    <li class="nav-item"><a class="nav-link" href= "{% url 'Ingreso' %}">Volver</a></li>
+
+    {%  endif   %}
 
 {%  endblock    %}
 
@@ -53,8 +61,8 @@
                             <img class="img-fluid" src="{% static 'Login/assets/img/portfolio/2.jpg' %}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Explore</div>
-                            <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            <div class="portfolio-caption-heading">FRANCISCO VASTA</div>
+                            <div class="portfolio-caption-subheading text-muted">Desarrollo Web Python</div>
                         </div>
                     </div>
                 </div>

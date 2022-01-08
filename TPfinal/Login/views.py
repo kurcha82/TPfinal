@@ -78,7 +78,6 @@ def editarPerfil(request):
 
     return render(request, "Login/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
-@login_required
 def about(request):
 
     return render(request, 'Login/about.html')
