@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from Postulantes.models import Mensaje
 from .models import *
 from django.views.generic.edit import  CreateView
 from django.contrib.auth.decorators import login_required
@@ -13,21 +14,15 @@ def miPerfil(request):
 
     avatar = Avatar.objects.filter(usuarioA = request.user.id)
 
-    if len(avatar) != 0:
-        
-        for a in avatar:
-            cantidadDeAvatares = cantidadDeAvatares + 1
+    for a in avatar:
+        cantidadDeAvatares = cantidadDeAvatares + 1
     
     
         diccionario["avatar"] = avatar[cantidadDeAvatares-1].imagen.url
 
         return render(request, "Perfiles/mi_perfil.html", diccionario)
 
-    else:
-
-        diccionario["avatar"] = 'a'
-
-        return render(request, "Perfiles/mi_perfil.html", diccionario)
+    return render(request, "Perfiles/mi_perfil.html", diccionario)
         
 @method_decorator(login_required, name='dispatch')
 class AvatarCreacion(CreateView):
@@ -40,5 +35,27 @@ class AvatarCreacion(CreateView):
     def form_valid(self, form):
         form.instance.usuarioA = self.request.user
         return super().form_valid(form)
+
+@login_required
+def listaMensajes(request):
+
+    dic ={}
+
+    tema = []
+
+    mensajePara = Mensaje.objects.filter(usuPostulado = request.user.id)
+
+    mensajeDe = Mensaje.objects.filter(usuarioM = request.user.id)
+
+    for m in mensajeDe:
+
+        tema.append = m.usuPostulado.requerido.posicion
+
+    dic ["tema"] = tema
+
+    #dic = {"mensajeSobre":mensajesPara}
+
+
+    return render(request, "Perfiles/mensajeLista.html", dic)
 
 

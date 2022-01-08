@@ -23,23 +23,26 @@
 
 
 {% block contenido%}
+{% for t in tema %}
 
-
-<p>
-        <a href="{% url 'MisPostulaciones' user.id%}">Mis postulaciones</a>
-        <a href= "{% url 'EditarPerfil' %}">Editar Perfil</a>
-        <a href= "{% url 'MensjesLista' %}">Mensajes</a>
-</p>
-
-{% if  request.user.is_authenticated %}
+        <p>{{ t }}</p>
         
-        <img src="{{ avatar }}" alt="Usted puede agregar una foto aquí" height="250">
 
-{% endif %}
-<p><a href="{% url 'CambiarFoto' %}">Cambiar Foto </a></p>
+{% endfor %}
 
-<h3>Datos:</h3>
-<p>Nombre: {{user.first_name}} {{user.last_name}}</p>
-<p>Usuario: {{user.username}}</p>
-<p>eMail: {{user.email}}</p>
+{% for mensaje in mensajeSobre %}
+
+        <p>{{ t }}</p>
+        
+        
+              <p style="border: ridge #41414e 1px;"></p>
+        
+
+                <p>De {{ mensaje.usuarioM.username }}, por postulación a {{ mensaje.usuPostulado.requerido.posicion }}</p>
+                {{mensaje.mensaje}}
+        
+                <p> <a href="{% url 'Inicio'  %}">Ver mensaje</a> </p>
+
+{% endfor %}
+
 {%  endblock %}

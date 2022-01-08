@@ -3,7 +3,7 @@
 {%  load static %}
 
 {%  block titulo    %}
-        <title>REQUERIDOS</title>
+        <title>POSTULANTE</title>
 {%  endblock    %}
 
 {%  block link  %}
@@ -15,17 +15,23 @@
 {%  endblock    %}
 
 {% block presentacion %}
-<div class="masthead-heading text-uppercase">REQUERIDOS</div>
-<div class="masthead-subheading">Realice una búsqueda de personal</div>
+<div class="masthead-heading text-uppercase">POSTULANTE</div>
+<div class="masthead-subheading">Aquí puede ver el detalle del postulante</div>
 {%  endblock %}
 
-{% block contenido%}
+{% endif %}
 
-<p>Nombre: {{postulante.nombre}} {{postulante.apellido}}</p>
-<p>Formación: {{postulante.formacion}}</p>
-<p>Presentación: {{postulante.presentacion}}</p>
-<p>Correo electrónico: {{postulante.mail}}</p>
-<p>Teléfono: {{postulante.telefono}}</p>
-<p><a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
+        <img src="/media/{{postulante.avatarP.imagen}}" alt ="" height="200">
+
+        <p>Nombre: {{postulante.usuario.first_name}} {{postulante.usuario.last_name}}</p>
+        <p>Formación: {{postulante.formacion}}</p>
+        <p>Presentación: {{postulante.presentacion}}</p>
+        <p>Correo electrónico: {{postulante.usuario.email}}</p>
+        <p>Teléfono: {{postulante.telefono}}</p>
+        
+        <p>
+                <a href="{% url 'Mensaje' postulante.id %}">Enviar mensaje</a>
+                <a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a>
+        </p>
 
 {%  endblock %}
