@@ -21,7 +21,7 @@
 
 {% block contenido %}
 
-        <img src="/media/{{Avatar.imagen }}" alt="Usted puede agregar una foto aquí" height="250">
+        <img src="/media/{{Avatar.imagen }}" alt="" height="250">
 
         <p>Nombre: {{postulante.usuario.first_name}} {{postulante.usuario.last_name}}</p>
         <p>Formación: {{postulante.formacion}}</p>
@@ -30,7 +30,7 @@
         <p>Teléfono: {{postulante.telefono}}</p>
 
         <p>
-                <a href="{% url 'Mensaje' postulante.id %}">Enviar mensaje</a>
+                <a href="{% url 'Mensaje' postulante.usuario.id postulante.id %}">Enviar mensaje</a>
                 <a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a>
         </p>
 

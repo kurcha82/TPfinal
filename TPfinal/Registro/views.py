@@ -3,12 +3,6 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 
-# Create your views here.
-
-def registro(request):
-
-    return render(request, 'Registro/registro.html')
-
 def register(request):
     if request.method == "POST":
         #form = UserCreationForm(request.POST)

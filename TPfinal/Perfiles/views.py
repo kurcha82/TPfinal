@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Postulantes.models import Mensaje
+from Postulantes.models import Mensaje, Postulante
 from .models import *
 from django.views.generic.edit import  CreateView
 from django.contrib.auth.decorators import login_required
@@ -8,21 +8,15 @@ from django.utils.decorators import method_decorator
 @login_required
 def miPerfil(request):
 
-    diccionario = {}
+    if len(Avatar.objects.filter(usuarioA = request.user.id)) != 0 :
 
-    cantidadDeAvatares = 0
+        dic = {}
 
-    avatar = Avatar.objects.filter(usuarioA = request.user.id)
+        dic["Avatar"] = Avatar.objects.filter(usuarioA = request.user.id).latest("imagen")
 
-    for a in avatar:
-        cantidadDeAvatares = cantidadDeAvatares + 1
-    
-    
-        diccionario["avatar"] = avatar[cantidadDeAvatares-1].imagen.url
+        return render(request, "Perfiles/mi_perfil.html", dic)
 
-        return render(request, "Perfiles/mi_perfil.html", diccionario)
-
-    return render(request, "Perfiles/mi_perfil.html", diccionario)
+    return render(request, "Perfiles/mi_perfil.html")
         
 @method_decorator(login_required, name='dispatch')
 class AvatarCreacion(CreateView):
@@ -37,27 +31,61 @@ class AvatarCreacion(CreateView):
         return super().form_valid(form)
 
 @login_required
-def listaMensajes(request):
+def detalleMensaje(request, valor):
 
-    dic ={}
+    mensajes = []
 
-    tema = []
+    requerido = []
 
-    mensajes = Mensaje.objects.all()
+    f = []
 
-    mensajePara = Mensaje.objects.filter(usuPostulado = request.user.id)
+    dic = {}
 
-    mensajeDe = Mensaje.objects.filter(usuarioM = request.user.id)
+    todos = Mensaje.objects.all()
 
-    """  for m in mensajeDe:
+    for m in todos:
 
-        tema.append(m.usuPostulado.requerido.posicion)
+        if m.de_id == request.user.id or m.para_id == request.user.id:
 
-    dic ["tema"] = tema """
+            mensajes.append(m)
 
-    dic = {"mensajeSobre":mensajes}
+            if requerido.count(m.post.requerido) == 0:
+
+                requerido.append(m.post.requerido)
+
+    if valor == 'a':
+
+        return render(request, "Perfiles/mensajeLista.html", {"requerido":requerido})
+
+    else:
+
+        r = requerido[int(valor)-1]
+            
+        for m in mensajes:
+
+                if m.post.requerido_id == r.id:
+
+                    f.append(m)
+
+        dic["mensaje"] = f 
+
+        dic["requerido"] = requerido
+
+        dic["valor"] = valor
+
+        return render(request, "Perfiles/mensajeDetalle.html", dic)
 
 
-    return render(request, "Perfiles/mensajeLista.html", dic)
+def nav(request):
 
+    if request.user.is_authenticated:
 
+        u = request.user.username
+
+        if len(Avatar.objects.filter(usuarioA = request.user.id)) != 0 :
+
+            avatar = Avatar.objects.filter(usuarioA = request.user.id).latest("imagen")
+
+            return render(request, "Perfiles/mi_perfil.html", {"Avatar":avatar, "usuario": u})
+
+        return render(request, "Requeridos/padre.html", {"usuario": u})

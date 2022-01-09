@@ -13,6 +13,7 @@ class Postulante(models.Model):
     requerido = models.ForeignKey(Requeridos, on_delete=models.CASCADE)
 
 class Mensaje(models.Model):
-    usuarioM  = models.ForeignKey(User, on_delete=models.CASCADE)
-    usuPostulado = models.ForeignKey(Postulante, on_delete=models.CASCADE)
+    de  = models.ForeignKey(User, on_delete=models.CASCADE)
+    para = models.ForeignKey(User, on_delete=models.CASCADE, related_name="para")
+    post = models.ForeignKey(Postulante, on_delete=models.CASCADE)
     mensaje = models.TextField(max_length=300)

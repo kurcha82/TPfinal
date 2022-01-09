@@ -35,7 +35,9 @@ class PostulanteDetalle(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['Avatar'] = Avatar.objects.filter(usuarioA = self.request.user).latest("imagen")
+        p = Postulante.objects.get(pk=self.kwargs['pk'])
+        if len(Avatar.objects.filter(usuarioA = p.usuario_id)) != 0 :
+            context['Avatar'] = Avatar.objects.filter(usuarioA = p.usuario_id).latest("imagen")
         return context
 
 @method_decorator(login_required, name='dispatch')
@@ -44,7 +46,7 @@ class PostulanteUpdate(UpdateView):
     model = Postulante
     template_name = "Postulantes/Postulante_formulario.html"
     success_url = "/Perfiles/miPerfil"
-    fields = ["nombre", "apellido", "mail", "telefono", "presentacion", "formacion"]
+    fields = ["telefono", "presentacion", "formacion"]
 @method_decorator(login_required, name='dispatch')
 class PostulanteDelete(DeleteView):
     
@@ -61,7 +63,8 @@ class MensajeCracion(CreateView):
     fields = ["mensaje"]
 
     def form_valid(self, form):
-        form.instance.usuPostulado = Postulante.objects.get(pk=self.kwargs['pk'])
-        form.instance.usuarioM = self.request.user
+        form.instance.de = self.request.user
+        form.instance.para = User.objects.get(pk=self.kwargs['pk'])
+        form.instance.post = Postulante.objects.get(pk=self.kwargs['post'])
         form.save()
         return super().form_valid(form)

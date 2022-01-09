@@ -4,7 +4,9 @@ from Perfiles import views
 urlpatterns = [
 
     path('miPerfil', views.miPerfil, name='MiPerfil'),
-    path(r'^avatarNuevo$', views.AvatarCreacion.as_view(), name='CambiarFoto'),
-    path('mensajesLista', views.listaMensajes, name='MensjesLista'),
+    path('canbiarFoto', views.AvatarCreacion.as_view(), name='CambiarFoto'),
+    path(r'^ListaeM(?P<valor>\d+)$', views.detalleMensaje, name='MensjesLista'),
+    path(r'^DetalleM(?P<valor>\d+)$', views.detalleMensaje, name='MensjesDetalle'),
+    path('padre', views.nav, name='Padre')
 
 ]

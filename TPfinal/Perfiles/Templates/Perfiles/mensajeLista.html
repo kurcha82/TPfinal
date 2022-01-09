@@ -23,27 +23,18 @@
 
 
 {% block contenido%}
-{% for t in tema %}
 
-        <p>{{ t }}</p>
+{% for r in requerido %}
+
+        <h5>De postulacion: {{ r.posicion }}</h5>
+
+        <p>
+                <a href= "{% url 'MensjesDetalle' r.id %}">Ver</a>
+                <a href= "{% url 'MiPerfil' %}">Volver</a>
         
+        </p>
 
-{% endfor %}
-
-<p>{{mensajeSobre}} pelota</p>
-
-{% for t in mensajeSobre %}
-
-        <p>{{ t }}</p>
-        
-        
-                <p style="border: ridge #41414e 1px;"></p>
-        
-
-                <p>De {{ mensaje.usuarioM.username }}, por postulación a {{ mensaje.usuPostulado.requerido.posicion }}</p>
-                {{mensaje.mensaje}}
-        
-                <p> <a href="{% url 'Inicio'  %}">Ver mensaje</a> </p>
+        <p style="border: ridge #41414e 1px;"></p>
 
 {% endfor %}
 

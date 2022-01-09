@@ -25,6 +25,8 @@
 
 {% block contenido%}
 
+<p>{{request.user.username}}</p>
+
 <p>En esta sección podrás ver la lista de puestos solicitados:</p>
 
 {% for requerido in object_list %}

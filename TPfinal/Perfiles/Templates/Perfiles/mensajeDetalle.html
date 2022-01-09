@@ -24,22 +24,20 @@
 
 {% block contenido%}
 
-{{dic}}
-<p>
-        <a href="{% url 'MisPostulaciones' user.id%}">Mis postulaciones</a>
-        <a href= "{% url 'EditarPerfil' %}">Editar Perfil</a>
-        <a href= "{% url 'MensjesLista' 'a' %}">Mensajes</a>
-</p>
+<h5> De postulacion: {{ mensaje.0.post.requerido.posicion}}</h5>
+<a href= "{% url 'MensjesLista' 'a' %}">Volver</a>
 
-{% if  request.user.is_authenticated %}
+{% for m in mensaje %}
+
+        <p style="background-color: #969696;">De: {{m.de}}  para: {{m.para}}
         
-        <img src="/media/{{Avatar.imagen }}" alt="Usted puede agregar una foto aquí" height="250">
+        <a href= "{% url 'Mensaje'  m.de_id m.post.requerido.id %}">Responder</a>
+        
+        </p>
 
-{% endif %}
-<p><a href="{% url 'CambiarFoto' %}">Cambiar Foto </a></p>
+        <p>{{m.mensaje}}</p><br>
 
-<h3>Datos:</h3>
-<p>Nombre: {{user.first_name}} {{user.last_name}}</p>
-<p>Usuario: {{user.username}}</p>
-<p>eMail: {{user.email}}</p>
+
+{% endfor %}
+
 {%  endblock %}

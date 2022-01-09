@@ -45,7 +45,7 @@
 
         
         <p style="border: ridge #41414e 1px;"></p>
-        <p>Nombre: {{postu.nombre}} {{postu.apellido}}
+        <p>Nombre: {{postu.usuario.first_name}} {{postu.usuario.last_name}}
         <p>Formación: {{postu.formacion}}</p>
         <p>Presentación: {{postu.presentacion}}</p>
         <p><a href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p>
