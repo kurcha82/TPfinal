@@ -30,12 +30,14 @@
 
 {% endfor %}
 
-{% for mensaje in mensajeSobre %}
+<p>{{mensajeSobre}} pelota</p>
+
+{% for t in mensajeSobre %}
 
         <p>{{ t }}</p>
         
         
-              <p style="border: ridge #41414e 1px;"></p>
+                <p style="border: ridge #41414e 1px;"></p>
         
 
                 <p>De {{ mensaje.usuarioM.username }}, por postulación a {{ mensaje.usuPostulado.requerido.posicion }}</p>

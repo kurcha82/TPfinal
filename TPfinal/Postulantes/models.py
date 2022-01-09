@@ -11,7 +11,6 @@ class Postulante(models.Model):
     presentacion = models.CharField(max_length=300, verbose_name = "Presentación")
     formacion = models.CharField(max_length=300, verbose_name = "Formación")
     requerido = models.ForeignKey(Requeridos, on_delete=models.CASCADE)
-    avatarP = models.ForeignKey(Avatar, on_delete=models.SET_NULL, null =True, blank = True)
 
 class Mensaje(models.Model):
     usuarioM  = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -43,17 +43,19 @@ def listaMensajes(request):
 
     tema = []
 
+    mensajes = Mensaje.objects.all()
+
     mensajePara = Mensaje.objects.filter(usuPostulado = request.user.id)
 
     mensajeDe = Mensaje.objects.filter(usuarioM = request.user.id)
 
-    for m in mensajeDe:
+    """  for m in mensajeDe:
 
-        tema.append = m.usuPostulado.requerido.posicion
+        tema.append(m.usuPostulado.requerido.posicion)
 
-    dic ["tema"] = tema
+    dic ["tema"] = tema """
 
-    #dic = {"mensajeSobre":mensajesPara}
+    dic = {"mensajeSobre":mensajes}
 
 
     return render(request, "Perfiles/mensajeLista.html", dic)

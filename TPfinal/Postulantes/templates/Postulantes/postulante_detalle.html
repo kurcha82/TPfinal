@@ -19,16 +19,16 @@
 <div class="masthead-subheading">Aquí puede ver el detalle del postulante</div>
 {%  endblock %}
 
-{% endif %}
+{% block contenido %}
 
-        <img src="/media/{{postulante.avatarP.imagen}}" alt ="" height="200">
+        <img src="/media/{{Avatar.imagen }}" alt="Usted puede agregar una foto aquí" height="250">
 
         <p>Nombre: {{postulante.usuario.first_name}} {{postulante.usuario.last_name}}</p>
         <p>Formación: {{postulante.formacion}}</p>
         <p>Presentación: {{postulante.presentacion}}</p>
         <p>Correo electrónico: {{postulante.usuario.email}}</p>
         <p>Teléfono: {{postulante.telefono}}</p>
-        
+
         <p>
                 <a href="{% url 'Mensaje' postulante.id %}">Enviar mensaje</a>
                 <a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a>
