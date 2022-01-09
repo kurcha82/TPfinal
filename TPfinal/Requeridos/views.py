@@ -42,16 +42,5 @@ class RequeridosDelete(DeleteView):
     template_name = "Requeridos/Requeridos_borrar.html"
     success_url = "../requeridoslist"
 
-def nav(request):
-
-    if len(Avatar.objects.filter(usuarioA = request.user.id)) != 0 :
-
-        dic = {}
-
-        dic["Avatar"] = Avatar.objects.filter(usuarioA = request.user.id).latest("imagen")
-
-        return render(request, "Requeridos/padre.html", dic)
-
-    return render(request, "Requeridos/padre.html")
 
 

@@ -74,18 +74,3 @@ def detalleMensaje(request, valor):
         dic["valor"] = valor
 
         return render(request, "Perfiles/mensajeDetalle.html", dic)
-
-
-def nav(request):
-
-    if request.user.is_authenticated:
-
-        u = request.user.username
-
-        if len(Avatar.objects.filter(usuarioA = request.user.id)) != 0 :
-
-            avatar = Avatar.objects.filter(usuarioA = request.user.id).latest("imagen")
-
-            return render(request, "Perfiles/mi_perfil.html", {"Avatar":avatar, "usuario": u})
-
-        return render(request, "Requeridos/padre.html", {"usuario": u})
