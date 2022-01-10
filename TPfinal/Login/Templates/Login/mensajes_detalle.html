@@ -1,0 +1,23 @@
+{% extends 'Login/padre.html' %}
+
+{% load static}
+{%  block titulo    %}
+        <title>NOVEDADES</title>
+{%  endblock    %}
+
+    {% block presentacion %}
+
+    <div class="masthead-heading text-uppercase">{{mensajesblog.titulo}}</div>
+    <div class="masthead-subheading">{{mensajesblog.usuario}} - {{mensajesblog.fecha}}</div><br><br><br><br>
+    <div class="masthead-subheading">{{mensajesblog.mensaje}}</div>
+            {% endblock %}
+          
+{% block contenido %}
+  
+    
+    <p>
+        <a href="{% url 'BlogsList' %}">VOLVER</a>
+    </p>
+
+
+{% endblock %}

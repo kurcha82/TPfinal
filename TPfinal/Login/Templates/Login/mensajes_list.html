@@ -1,0 +1,41 @@
+{% extends 'Login/padre.html' %}
+
+{% load static}
+{%  block titulo    %}
+        <title>NOVEDADES</title>
+{%  endblock    %}
+
+
+{%  block link  %}
+<li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+{%  endblock    %}
+
+    {% block presentacion %}
+
+    <div class="masthead-heading text-uppercase">BIENVENIDO A LAS NOVEDADES</div>
+
+            {% endblock %}
+          
+{% block contenido %}
+
+    <ul>
+        <div class="text-center">
+
+        {%  for mensajes in object_list  %}
+         
+            <p><b> {{    mensajes.usuario   }} - {{    mensajes.fecha  }} </b></p>
+            <p> {{    mensajes.titulo   }}  </p>
+            <p>
+            <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'DetalleMensaje' mensajes.id %}">VER MAS</a>
+            </p>
+        {%  endfor  %}
+
+        </div>
+    </ul>
+
+        <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'New' %}">NUEVA NOVEDAD</a>
+    
+
+
+{% endblock %}

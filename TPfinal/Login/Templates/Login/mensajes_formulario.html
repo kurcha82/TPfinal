@@ -1,0 +1,29 @@
+{%  extends 'Login/padre.html' %}
+
+{%  load static %}
+
+{%  block titulo    %}
+        <title>NOVEDADES</title>
+{%  endblock    %}
+
+{%  block link  %}
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+{%  endblock    %}
+
+{% block contenido %}
+
+<form method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+
+    <input type="submit" value="CREAR NOVEDAD" />
+
+    </form>
+
+
+    <p>
+        <a href="{% url 'BlogsList' %}">VOLVER</a>
+    </p>
+
+{% endblock %}

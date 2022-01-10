@@ -11,5 +11,11 @@ urlpatterns = [
     path('about', views.about, name="About"),
     path('logout', LogoutView.as_view (template_name = 'Login/Logout.html'), name="Logout"),
 
+    #BLOG DE NOVEDADES
+
+    path('blogs/list', views.MensajesList.as_view(), name="BlogsList"),
+    path(r'^Detalle(?P<pk>\d+)$', views.MensajesDetalle.as_view(), name= 'DetalleMensaje'),
+    path(r'^nuevo$', views.MensajesCreacion.as_view(), name='New'),
+
 
 ]

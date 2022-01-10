@@ -1,7 +1,9 @@
+from django import template
 from django.shortcuts import render
 from django.http import HttpResponse
 from Postulantes.forms import *
 from Postulantes.models import *
+from Login.models import *
 from Login.forms import *
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -9,6 +11,11 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin #Para que solo personas REGISTRADAS, puedan acceder a una clase
 from django.contrib.auth.decorators import login_required #DECORADORES
 from django.contrib import messages
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+
+
 # Create your views here.
 
 def ingreso(request):
@@ -81,3 +88,22 @@ def editarPerfil(request):
 def about(request):
 
     return render(request, 'Login/about.html')
+
+# BLOG DE NOVEDADES
+
+class MensajesList(ListView):
+
+    model= MensajesBlog
+    template_name = "Login/mensajes_list.html"
+
+class MensajesDetalle(DetailView):
+
+    model = MensajesBlog
+    template_name = "Login/mensajes_detalle.html"
+
+
+class MensajesCreacion(CreateView):
+    model = MensajesBlog
+    template_name = "Login/mensajes_formulario.html"
+    succes_url = "Login/mensajes_list.html"
+    fields = ["usuario", "fecha", "titulo", "mensaje"]
