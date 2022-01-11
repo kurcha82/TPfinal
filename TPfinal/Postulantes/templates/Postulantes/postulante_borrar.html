@@ -1,17 +1,9 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Postulantes/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
         <title>REQUERIDOS</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
 {%  endblock    %}
 
 {% block presentacion %}
@@ -23,10 +15,12 @@
 
 <form method="post"> {% csrf_token %}
 
-        ¿Estas seguro que quiere eliminar "{{ object }}"? 
+        <div class="text-center">
+                <br><h4> ¿Estas seguro que quiere eliminar su postulación a <b>"{{ object.requerido.posicion }}"</b>? </h4>
 
-        <input type="submit" value="Borrar" />
-        
+                <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Borrar" />
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'MisPostulaciones' user.id%}">Cancelar</a>
+        </div>
 
 </form>
 {%  endblock %}

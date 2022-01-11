@@ -6,51 +6,46 @@
         <title>REQUERIDOS</title>
 {%  endblock    %}
 
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-{%  endblock    %}
-
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">REQUERIDOS</div>
-<div class="masthead-subheading">Realice una búsqueda de personal</div>
+<div class="masthead-subheading">Detalle del puesto y sus postulantes</div>
 {%  endblock %}
+
+{% block boton %}
+<a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostulanteNuevo' requeridos.id %}">Postularse</a>
+{%  endblock    %}
 
 {% block contenido%}
 
-<h3>Puesto requerido:</h3>
+<ul>
+        <div class="text-center">
 
-<p>Posición: {{ requeridos.posicion }}</p>
-<p>Sector: {{ requeridos.sector }}</p>
-<p>Descripción: {{ requeridos.descripcion }}</p>
-<p>Formación requerida: {{ requeridos.formacionReq }}</p>
-<p>Interno de la empresa: {{ requeridos.deLaEmpresa }}</p>
-<p>Propuesta monetaria: {{ requeridos.propMonetaria }}</p>
-<p>Fecha de publicación: {{ requeridos.fechaPublicacion }}</p>
+                <br><h4>Puesto:</h4><br>
+                <h5>Posición: {{ requeridos.posicion }}</h5>
+                <p>Sector: {{ requeridos.sector }}</p>
+                <p>Descripción: {{ requeridos.descripcion }}</p>
+                <p>Formación requerida: {{ requeridos.formacionReq }}</p>
+                <p>Interno de la empresa: {{ requeridos.deLaEmpresa }}</p>
+                <p>Propuesta monetaria: {{ requeridos.propMonetaria }}</p>
+                <p>Fecha de publicación: {{ requeridos.fechaPublicacion }}</p>
 
-<p>
-        <a href="{% url 'Requeridos' %}">Volver</a>
-        <a href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
-        <a href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
-        <a href="{% url 'PostulanteNuevo' requeridos.id %}">Postularse</a>
+                <p>
+                        <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
+                        <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
+                        <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Requeridos</a>
+                </p><br><br>
 
-</p>
+                <h4>Postulantes:</h4><br>
 
-<h3>Postulantes:</h3>
+                {% for postu in requeridos.postulante_set.all %}
 
-{% for postu in requeridos.postulante_set.all %}
+                        <h6>Nombre: {{postu.usuario.first_name}} {{postu.usuario.last_name}}</h6> 
+                        <p>Formación: {{postu.formacion}}</p>
+                        <p>Presentación: {{postu.presentacion}}</p>
+                        <p><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p><br>
 
-        
-        <p style="border: ridge #41414e 1px;"></p>
-        <p>Nombre: {{postu.usuario.first_name}} {{postu.usuario.last_name}}
-        <p>Formación: {{postu.formacion}}</p>
-        <p>Presentación: {{postu.presentacion}}</p>
-        <p><a href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p>
-
-
-{% endfor %}
+                {% endfor %}
+        </div>
+</ul>
 
 {%  endblock %}

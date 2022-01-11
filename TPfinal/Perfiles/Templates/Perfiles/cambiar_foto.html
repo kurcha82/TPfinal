@@ -1,18 +1,9 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Perfiles/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
         <title>MI PERFIL</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-
 {%  endblock    %}
 
 {% block presentacion %}
@@ -25,10 +16,10 @@
 <form method="POST" enctype="multipart/form-data">
         
         {% csrf_token %}
+
         {{form.as_p}}
 
-
-        <input type="submit" value="Nueva">
+        <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Nueva">
 
 </form>
 

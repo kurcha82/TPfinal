@@ -6,22 +6,17 @@
         <title>POSTULANTE</title>
 {%  endblock    %}
 
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-{%  endblock    %}
-
 {% block contenido %}
 
 <form method="POST"> {% csrf_token %}
+<ul>
 
         {{form.as_p}}
 
-        <input type="submit" value="CARGAR POSTULANTE"/>
+        <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="CARGAR POSTULANTE"/>
 
-        </form>
+</ul>
+
+</form>
 
 {% endblock %}

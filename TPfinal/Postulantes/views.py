@@ -37,7 +37,7 @@ class PostulanteDetalle(DetailView):
         context = super().get_context_data(**kwargs)
         p = Postulante.objects.get(pk=self.kwargs['pk'])
         if len(Avatar.objects.filter(usuarioA = p.usuario_id)) != 0 :
-            context['Avatar'] = Avatar.objects.filter(usuarioA = p.usuario_id).latest("imagen")
+            context['Avatar'] = Avatar.objects.filter(usuarioA = p.usuario_id).latest("id")
         return context
 
 @method_decorator(login_required, name='dispatch')

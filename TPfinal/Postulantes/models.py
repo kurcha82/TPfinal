@@ -8,8 +8,8 @@ class Postulante(models.Model):
 
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     telefono = models.IntegerField(verbose_name = "Teléfono")
-    presentacion = models.CharField(max_length=300, verbose_name = "Presentación")
-    formacion = models.CharField(max_length=300, verbose_name = "Formación")
+    presentacion = models.TextField(max_length=300, verbose_name = "Presentación")
+    formacion = models.TextField(max_length=300, verbose_name = "Formación")
     requerido = models.ForeignKey(Requeridos, on_delete=models.CASCADE)
 
 class Mensaje(models.Model):

@@ -12,7 +12,7 @@ def miPerfil(request):
 
         dic = {}
 
-        dic["Avatar"] = Avatar.objects.filter(usuarioA = request.user.id).latest("imagen")
+        dic["Avatar"] = Avatar.objects.filter(usuarioA = request.user.id).latest("id")
 
         return render(request, "Perfiles/mi_perfil.html", dic)
 

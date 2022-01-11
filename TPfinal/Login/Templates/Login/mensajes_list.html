@@ -16,14 +16,14 @@
     <div class="masthead-heading text-uppercase">BIENVENIDO A LAS NOVEDADES</div>
 
             {% endblock %}
-          
+
 {% block contenido %}
 
     <ul>
         <div class="text-center">
 
         {%  for mensajes in object_list  %}
-         
+        
             <p><b> {{    mensajes.usuario   }} - {{    mensajes.fecha  }} </b></p>
             <p> {{    mensajes.titulo   }}  </p>
             <p>

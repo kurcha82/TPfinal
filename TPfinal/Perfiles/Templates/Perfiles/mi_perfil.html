@@ -1,19 +1,9 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Perfiles/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
         <title>MI PERFIL</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-
-
 {%  endblock    %}
 
 {% block presentacion %}
@@ -24,22 +14,24 @@
 
 {% block contenido%}
 
-{{dic}}
-<p>
-        <a href="{% url 'MisPostulaciones' user.id%}">Mis postulaciones</a>
-        <a href= "{% url 'EditarPerfil' %}">Editar Perfil</a>
-        <a href= "{% url 'MensjesLista' 'a' %}">Mensajes</a>
-</p>
+<div class="text-center">
+        <p>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'MisPostulaciones' user.id%}">Mis postulaciones</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'EditarPerfil' %}">Editar Perfil</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'MensjesLista' 'a' %}">Mensajes</a>
+        </p>
 
-{% if  request.user.is_authenticated %}
-        
-        <img src="/media/{{Avatar.imagen }}" alt="Usted puede agregar una foto aquí" height="250">
+        {% if  request.user.is_authenticated %}
+                
+                <p><img src="/media/{{Avatar.imagen }}" alt="Usted puede agregar una foto aquí" height="250"></p>
 
-{% endif %}
-<p><a href="{% url 'CambiarFoto' %}">Cambiar Foto </a></p>
+        {% endif %}
 
-<h3>Datos:</h3>
-<p>Nombre: {{user.first_name}} {{user.last_name}}</p>
-<p>Usuario: {{user.username}}</p>
-<p>eMail: {{user.email}}</p>
+        <p><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'CambiarFoto' %}">Cambiar Foto </a></p>
+
+        <h5>Nombre: {{user.first_name}} {{user.last_name}}</h5>
+        <p>Usuario: {{user.username}}</p>
+        <p>eMail: {{user.email}}</p>
+</div>
+
 {%  endblock %}

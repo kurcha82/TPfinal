@@ -1,41 +1,28 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Perfiles/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
-        <title>MI PERFIL</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-
-
+        <title>MENSAJES</title>
 {%  endblock    %}
 
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">{{user.username}}</div>
-<div class="masthead-subheading">Bienvenido a tu perfil</div>
+<div class="masthead-subheading">Tus mensajes</div>
 {%  endblock %}
 
 
 {% block contenido%}
+<ul>
+        <h4>Mensajes:</h4><br>
+        {% for r in requerido %}
 
-{% for r in requerido %}
+                <h5 style="background-color: #969696;">
+                        De postulacion: {{ r.posicion }}  &nbsp
+                        <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'MensjesDetalle' r.id %}">Ver</a>
+                </h5><br>
 
-        <h5>De postulacion: {{ r.posicion }}</h5>
-
-        <p>
-                <a href= "{% url 'MensjesDetalle' r.id %}">Ver</a>
-                <a href= "{% url 'MiPerfil' %}">Volver</a>
-        
-        </p>
-
-        <p style="border: ridge #41414e 1px;"></p>
-
-{% endfor %}
+        {% endfor %}
+</ul>
 
 {%  endblock %}

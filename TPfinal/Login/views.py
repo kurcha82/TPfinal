@@ -105,5 +105,10 @@ class MensajesDetalle(DetailView):
 class MensajesCreacion(CreateView):
     model = MensajesBlog
     template_name = "Login/mensajes_formulario.html"
-    succes_url = "Login/mensajes_list.html"
-    fields = ["usuario", "fecha", "titulo", "mensaje"]
+    success_url = "/Login/blogs/list"
+    fields = ["fecha", "titulo", "mensaje"]
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        form.save()
+        return super().form_valid(form)

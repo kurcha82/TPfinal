@@ -6,17 +6,9 @@
         <title>REQUERIDOS</title>
 {%  endblock    %}
 
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-{%  endblock    %}
-
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">REQUERIDOS</div>
-<div class="masthead-subheading">Realice una búsqueda de personal</div>
+<div class="masthead-subheading">En esta sección podrás ver la lista de puestos solicitados</div>
 {%  endblock %}
 
 {% block boton %}
@@ -25,20 +17,21 @@
 
 {% block contenido%}
 
-<p>En esta sección podrás ver la lista de puestos solicitados:</p>
-
 {% for requerido in object_list %}
 
         
         
-                <p style="border: ridge #41414e 1px;"></p>
+        <ul>
+                <div class="text-center">
         
 
-                <p>Posición: {{ requerido.posicion }}</p>
-                <p>Formación requerida: {{ requerido.formacionReq }}</p>
-                <p>Propuesta monetaria: {{ requerido.propMonetaria }}</p>
-        
-                <p> <a href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a> </p>
+                        <h5>Posición: {{ requerido.posicion }}</h5>
+                        <p>Formación requerida: {{ requerido.formacionReq }}</p>
+                        <p>Propuesta monetaria: {{ requerido.propMonetaria }}</p>
+                
+                        <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a>
+                </div>
+        </ul>
 
 {% endfor %}
 

@@ -15,7 +15,7 @@ urlpatterns = [
 
     path('blogs/list', views.MensajesList.as_view(), name="BlogsList"),
     path(r'^Detalle(?P<pk>\d+)$', views.MensajesDetalle.as_view(), name= 'DetalleMensaje'),
-    path(r'^nuevo$', views.MensajesCreacion.as_view(), name='New'),
+    path('new', views.MensajesCreacion.as_view(), name='New'),
 
 
 ]

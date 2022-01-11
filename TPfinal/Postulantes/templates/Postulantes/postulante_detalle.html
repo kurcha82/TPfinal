@@ -1,17 +1,9 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Postulantes/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
         <title>POSTULANTE</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
 {%  endblock    %}
 
 {% block presentacion %}
@@ -21,17 +13,21 @@
 
 {% block contenido %}
 
-        <img src="/media/{{Avatar.imagen }}" alt="" height="250">
+<ul>
+        <div class="text-center">
 
-        <p>Nombre: {{postulante.usuario.first_name}} {{postulante.usuario.last_name}}</p>
-        <p>Formación: {{postulante.formacion}}</p>
-        <p>Presentación: {{postulante.presentacion}}</p>
-        <p>Correo electrónico: {{postulante.usuario.email}}</p>
-        <p>Teléfono: {{postulante.telefono}}</p>
+                <br><p><img src="/media/{{Avatar.imagen }}" alt="" height="250"></p><br>
 
-        <p>
-                <a href="{% url 'Mensaje' postulante.usuario.id postulante.id %}">Enviar mensaje</a>
-                <a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a>
-        </p>
+                <h4>Nombre: {{postulante.usuario.first_name}} {{postulante.usuario.last_name}}</h4>
+                <p>Formación: {{postulante.formacion}}</p>
+                <p>Presentación: {{postulante.presentacion}}</p>
+                <p>Correo electrónico: {{postulante.usuario.email}}</p>
+                <p>Teléfono: {{postulante.telefono}}</p>
+
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Mensaje' postulante.usuario.id postulante.id %}">Enviar mensaje</a>
+                <p><a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
+
+        </div>
+</ul>
 
 {%  endblock %}

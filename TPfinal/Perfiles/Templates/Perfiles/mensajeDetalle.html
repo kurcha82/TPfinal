@@ -1,19 +1,9 @@
-{%  extends 'Requeridos/padre.html' %}
+{%  extends 'Perfiles/padre.html' %}
 
 {%  load static %}
 
 {%  block titulo    %}
         <title>MI PERFIL</title>
-{%  endblock    %}
-
-{%  block link  %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
-
-
 {%  endblock    %}
 
 {% block presentacion %}
@@ -24,20 +14,22 @@
 
 {% block contenido%}
 
-<h5> De postulacion: {{ mensaje.0.post.requerido.posicion}}</h5>
-<a href= "{% url 'MensjesLista' 'a' %}">Volver</a>
+<ul>
+        <h4>De postulacion : {{ mensaje.0.post.requerido.posicion}}</h4>
 
-{% for m in mensaje %}
+        <p><a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'MensjesLista' 'a' %}">Mensajes</p></a><br>
 
-        <p style="background-color: #969696;">De: {{m.de}}  para: {{m.para}}
-        
-        <a href= "{% url 'Mensaje'  m.de_id m.post.requerido.id %}">Responder</a>
-        
-        </p>
+        {% for m in mensaje %}
 
-        <p>{{m.mensaje}}</p><br>
+                <h6 style="background-color: #969696;">
+                        De: {{m.de}}  para: {{m.para}} &nbsp
+                
+                        <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'Mensaje'  m.de_id m.post.requerido.id %}">Responder</a>
+                </h6>
 
+                <p style="text-indent: 40px;">{{m.mensaje}}</p><br>
 
-{% endfor %}
+        {% endfor %}
+</ul>
 
 {%  endblock %}
