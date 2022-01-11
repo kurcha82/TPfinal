@@ -3,7 +3,7 @@
 {%  load static %}
 
 {%  block titulo    %}
-        <title>MI PERFIL</title>
+        <title>CAMBIAR FOTO</title>
 {%  endblock    %}
 
 {%  block link  %}
@@ -17,7 +17,7 @@
 
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">{{user.username}}</div>
-<div class="masthead-subheading">Bienvenido a tu perfil</div>
+<div class="masthead-subheading">Agrega una nueva foto</div>
 {%  endblock %}
 
 {% block contenido%}
@@ -28,10 +28,13 @@
 
         {{form.as_p}}
 
-        <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Nueva">
+        <p>
+                <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Nueva">
+                <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a>
+        </p>
 
-</form><br><br>
+</form>
 
-<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a>
+
 
 {%  endblock %}

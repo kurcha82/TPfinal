@@ -3,7 +3,7 @@
 {%  load static %}
 
 {%  block titulo    %}
-        <title>POSTULANTE</title>
+        <title>NUEVO MENSAJE</title>
 {%  endblock    %}
 
 {%  block link  %}
@@ -23,12 +23,13 @@
 
                 {{form.as_p}}
 
-                <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Enviar mensaje"/>
+                <p>
+                        <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Enviar mensaje"/>
+                        <a class="btn btn-primary btn-xl text-uppercase" href="javascript:history.back(-1);">Volver</a>
+                </p>
 
         </form>
 
 </ul>
-
-<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MensjesLista' %}">Volver</a>
 
 {% endblock %}

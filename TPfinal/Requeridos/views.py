@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
@@ -6,7 +5,6 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import  CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
-from Perfiles.models import Avatar
 
 @method_decorator(login_required, name='dispatch')
 class RequeridosCreacion(CreateView):
@@ -35,6 +33,7 @@ class RequeridosUpdate(UpdateView):
     template_name = "Requeridos/Requeridos_formulario.html"
     success_url = "../requeridoslist"
     fields = ["posicion", "sector", "descripcion", "formacionReq", "deLaEmpresa", "propMonetaria", "fechaPublicacion"]
+
 @method_decorator(login_required, name='dispatch')
 class RequeridosDelete(DeleteView):
     

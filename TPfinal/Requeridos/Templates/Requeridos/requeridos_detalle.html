@@ -42,7 +42,7 @@
                 <p>
                         <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
                         <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
-                        <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Requeridos</a>
+                        <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Volver</a>
                 </p><br><br><hr>
 
                 <h4>Postulantes:</h4><br>
@@ -56,7 +56,6 @@
 
                 {% endfor %}
 
-                <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Volver</a>
         </div>
 </ul>
 

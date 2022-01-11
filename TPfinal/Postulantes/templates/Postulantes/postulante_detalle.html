@@ -33,8 +33,8 @@
                 <p>Correo electrónico: {{postulante.usuario.email}}</p>
                 <p>Teléfono: {{postulante.telefono}}</p>
 
-                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Mensaje' postulante.usuario.id postulante.id %}">Enviar mensaje</a>
-                <p><a href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
+                <p><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Mensaje' postulante.usuario.id postulante.id %}">Enviar mensaje</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosDetalle' postulante.requerido_id %}">Volver</a></p>
 
         </div>
 </ul>

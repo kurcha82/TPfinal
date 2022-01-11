@@ -3,7 +3,7 @@
 {%  load static %}
 
 {%  block titulo    %}
-        <title>MI PERFIL</title>
+        <title>MENSAJES</title>
 {%  endblock    %}
 
 {%  block link  %}
@@ -17,7 +17,7 @@
 
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">{{user.username}}</div>
-<div class="masthead-subheading">Bienvenido a tu perfil</div>
+<div class="masthead-subheading">Tus mensajes</div>
 {%  endblock %}
 
 
@@ -40,7 +40,5 @@
 
         {% endfor %}
 </ul>
-
-<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a>
 
 {%  endblock %}
