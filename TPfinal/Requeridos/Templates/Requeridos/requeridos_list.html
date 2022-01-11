@@ -6,6 +6,15 @@
         <title>REQUERIDOS</title>
 {%  endblock    %}
 
+{%  block link  %}
+<li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link-act" href= '#page-top'>Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'BlogsList' %}">Novedades</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+{%  endblock    %}
+
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">REQUERIDOS</div>
 <div class="masthead-subheading">En esta sección podrás ver la lista de puestos solicitados</div>
@@ -30,6 +39,7 @@
                         <p>Propuesta monetaria: {{ requerido.propMonetaria }}</p>
                 
                         <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosDetalle' requerido.id %}">Detalle</a>
+                        <hr>
                 </div>
         </ul>
 

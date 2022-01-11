@@ -6,6 +6,16 @@
         <title>REQUERIDOS</title>
 {%  endblock    %}
 
+
+{%  block link  %}
+<li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link-act" href= '#page-top'>Requeridos</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'BlogsList' %}">Novedades</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+{%  endblock    %}
+
 {% block presentacion %}
 <div class="masthead-heading text-uppercase">REQUERIDOS</div>
 <div class="masthead-subheading">Detalle del puesto y sus postulantes</div>
@@ -33,7 +43,7 @@
                         <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosEditar' requeridos.id %}">Modificar</a>
                         <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'RequeridosBorrar' requeridos.id %}">Borrar</a>
                         <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Requeridos</a>
-                </p><br><br>
+                </p><br><br><hr>
 
                 <h4>Postulantes:</h4><br>
 
@@ -42,9 +52,11 @@
                         <h6>Nombre: {{postu.usuario.first_name}} {{postu.usuario.last_name}}</h6> 
                         <p>Formación: {{postu.formacion}}</p>
                         <p>Presentación: {{postu.presentacion}}</p>
-                        <p><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p><br>
+                        <p><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'PostulanteDetalle' postu.id %}">Detalle</a></p><br><hr>
 
                 {% endfor %}
+
+                <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'Requeridos' %}">Volver</a>
         </div>
 </ul>
 

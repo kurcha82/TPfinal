@@ -8,10 +8,12 @@
 
 {%  block link  %}
     {%  if request.user.is_authenticated    %}
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'EditarPerfil' %}">Editar Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+    <li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+    <li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+    <li class="nav-item"><a class="nav-link" href= "{% url 'BlogsList' %}">Novedades</a></li>
+    <li class="nav-item"><a class="nav-link" href= "{% url 'MiPerfil' %}">Mi Perfil</a></li>
+    <li class="nav-item"><a class="nav-link-act" href= "#page-top">About</a></li>
+    <li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
     {%  endif   %}
 
     {%  if not request.user.is_authenticated    %}
@@ -76,8 +78,8 @@
                             <img class="img-fluid" src="{% static 'Login/assets/img/portfolio/3.jpg' %}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Finish</div>
-                            <div class="portfolio-caption-subheading text-muted">Identity</div>
+                            <div class="portfolio-caption-heading">Gustavo Lizarraga</div>
+                            <div class="portfolio-caption-subheading text-muted">Desarrollo Web Python</div>
                         </div>
                     </div>
                 </div>

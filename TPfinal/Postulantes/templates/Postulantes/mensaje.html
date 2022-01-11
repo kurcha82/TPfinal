@@ -6,6 +6,15 @@
         <title>POSTULANTE</title>
 {%  endblock    %}
 
+{%  block link  %}
+<li class="nav-item"><a class="nav-link" href= "{% url 'Inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href= "{% url 'Requeridos' %}">Requeridos</a></li>
+<li class="nav-item"><a class="nav-link" href= "{% url 'BlogsList' %}">Novedades</a></li>
+<li class="nav-item"><a class="nav-link-act" href= "#page-top">Mi Perfil</a></li>
+<li class="nav-item"><a class="nav-link" href= "{% url 'About' %}">About</a></li>
+<li class="nav-item"><a class="nav-link" href= "{% url 'Logout' %}">Logout</a></li>
+{%  endblock    %}
+
 {% block contenido %}
 
 <ul>
@@ -19,5 +28,7 @@
         </form>
 
 </ul>
+
+<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MensjesLista' %}">Volver</a>
 
 {% endblock %}
