@@ -5,6 +5,18 @@ Gustavo Garcia Mazzetti, Gustavo Lizarraga, Francisco Vasta
 La idea de este proyecto es crear un sitio web que sirva a una empresa como intranet en donde no solo los empleados puedan encontrarse y conectar, sino también ver puestos vacantes en otros sectores y postularse para los mismos. La motivación es poder generar un espacio de encuentro y desarrollo personal, en donde el crecimiento de los vínculos internos de la empresa dependa directamente de sus actores principales.
 Este sitio fue desarrollado bajo el framework Django para desarrollo web y consta en esta primera instancia de una página de ingreso desde donde se puede realizar el registro de usuarios, cargando para esto sus datos personales y de contacto. Al realizar el registro nos redirige a la intranet desde donde se puede cargar nuevas búsquedas laborales o también completar sus datos para postularse a algún puesto vacante.
 
+La programación del proyecto, se realizó de la siguiente manera:
+
+Francisco Vasta:  
+      - Aplicación Requeridos: CRUD de puestos requeridos con visualización de lista y detalle de éstos con los postulantes correspondientes.
+      - Aplicación Postulantes: CRUD de postulantes con conexión a puesto requerido, a usuario y a Avatar. Modelo y creación de mensajes y vista de postulaciones particulares del usuario.
+      - Aplicación Perfiles: visualización de perfil, carga de Avatar y visualización de mensajes por lista de puesto requerido y detalle.
+      - Logout
+      
+Gustavo Garcia Mazzetti:
+      - Aplicación Login: Registro de usuarios, página de ingreso, página de inicio con login requerido. Sección About, con descripción de participantes. CRUD sección Novedades, donde se puede realizar avisos internos.
+      - Aplicación Perfiles: Formulario para la edición de usuario, contraseña y mail de la persona.
+      - Estética: Corrección y edición de archivo css y html, para pequeños cambios estéticos.
 ### Contenido
 
 Este proyecto consta de una única rama principal donde se encuentra la estructura principal del proyecto y una aplicación llamada “Postulantes”. Dentro de esta se encuentra los archivos que constituyen el sitio web, como serían los templates y los archivos donde se configura la lógica interna.
@@ -20,15 +32,16 @@ Para poder probar este proyecto en tu PC deberás tener en cuenta los siguientes
 python manage.py runserver
 ```
 
-- Una vez hecho esto, la consola devolverá una url con un valor numérico. Copiar y pegar ésta en el navegador web y añadir a la misma:
+- Una vez hecho esto, la consola devolverá una url con un valor numérico. Desde la url, se podrá ingresar directamente a la página.
 
-```
-/Postulante/ingreso
-```
+
 ¡¡¡Ya debería poder navegar por el sitio web!!!
 
 ### Vista previa
 
 Así debería verse la página de inicio del sitio web
 
-![](/TPfinal/ingreso.PNG)
+![Ingreso GGL](https://user-images.githubusercontent.com/94941251/149009867-4747eccc-4a5a-4220-a907-0f665c6f4066.jpg)
+
+
+Desde esta página de Ingreso, se puede crear un usuario, o loguearse con uno ya existente, para poder navegar en el sitio.
