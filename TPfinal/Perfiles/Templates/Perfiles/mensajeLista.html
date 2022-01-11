@@ -28,7 +28,7 @@
 
                 <h5 style="background-color: #969696;">
                         De postulacion: {{ r.posicion }}  &nbsp
-                        <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'MensjesDetalle' r.id %}">Ver</a>
+                        <a class="btn btn-primary btn-xl text-uppercase" href= "{% url 'MensjesDetalle' forloop.counter0 %}">Ver</a>
                 </h5><br>
 
         {% endfor %}
