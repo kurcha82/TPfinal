@@ -44,8 +44,8 @@ Así debería verse la página de inicio del sitio web
 
 ![Ingreso GGL](https://user-images.githubusercontent.com/94941251/149009867-4747eccc-4a5a-4220-a907-0f665c6f4066.jpg)
 
-También se puede ver un video de la navegación por la página [aquí](https://drive.google.com/file/d/1y65Pyb89ero8WyBOHyenUzFGv4gEPjBq/view?usp=sharing) .
-
 Desde esta página de Ingreso se puede crear un usuario, o acceder con uno ya existente para poder navegar en el sitio. Es requisito para poder ingresar a éste, estar registrado. En el caso que se quiera ir a la página Inicio, sin estar logueado, no se podrá acceder. Es posible acceder a la sección About para leer sobre GGL SOLUCIONES sin estar logueado, pero solo permitirá volver a la página de ingreso.
+
+<br />__También se puede ver un video de la navegación por la página [aquí](https://drive.google.com/file/d/1y65Pyb89ero8WyBOHyenUzFGv4gEPjBq/view?usp=sharing).__
 
 
