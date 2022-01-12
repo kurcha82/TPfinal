@@ -16,10 +16,14 @@
 
     {%  csrf_token  %}
 
-    {{form.as_p}}
+    {{miFormulario.as_p}}
 
 <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="CONFIRMAR">
 
 
 </form>
+
+<p>
+    <br><a class="btn btn-primary btn-xl text-uppercase" href="{% url 'BlogsList' %}">VOLVER</a>
+</p>
 {%  endblock %}
