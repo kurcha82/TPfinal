@@ -19,7 +19,8 @@ Gustavo Garcia Mazzetti:
       - Estética: Corrección y edición de archivo css y html, para pequeños cambios estéticos.
 ### Contenido
 
-Este proyecto consta de una única rama principal donde se encuentra la estructura principal del proyecto y una aplicación llamada “Postulantes”. Dentro de esta se encuentra los archivos que constituyen el sitio web, como serían los templates y los archivos donde se configura la lógica interna.
+Este proyecto consta de una única rama principal donde se encuentra la estructura principal del proyecto y las aplicaciones, Login, Postulantes, Requeridos, Perfiles y Registro. Cada aplicación está orientada a un conjunto de procesos en particular, los cuales componen la página. El objetivo de esto, es que fuera mas sencillo a la hora de escribir el código, y el mismo quedara ordenada, y agrupado según funciones, y así evitar grandes cantidades de código, en una sola aplicación. En cuanto a la carpeta static, y los archivos que la componen, se utilizó solo una, ya que los cambios en la misma fueron pocos, tales como algunas imágenes y retoques en el archivo style. Por último, dentro de la carpeta que contiene todos los archivos, junto con el readme, se adjuntó el excel con las pruebas que se realizaron. 
+
 
 ### Puesta en marcha
 
@@ -44,4 +45,4 @@ Así debería verse la página de inicio del sitio web
 ![Ingreso GGL](https://user-images.githubusercontent.com/94941251/149009867-4747eccc-4a5a-4220-a907-0f665c6f4066.jpg)
 
 
-Desde esta página de Ingreso, se puede crear un usuario, o loguearse con uno ya existente, para poder navegar en el sitio.
+Desde esta página de Ingreso, se puede crear un usuario, o loguearse con uno ya existente, para poder navegar en el sitio. Es requisito para poder ingresar al sitio, estar registrado. En el caso que se quiera ir a la página Inicio, sin estar logueado, no se podrá acceder. Es posible acceder a la sección About, para leer sobre GGL SOLUCIONES, sin estar logueado, pero solo permitirá volver a loguearse.
