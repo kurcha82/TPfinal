@@ -5,6 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import  CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 from Perfiles.models import Avatar
+from django.views.generic import ListView
 
 @method_decorator(login_required, name='dispatch')
 class PostulanteCreacion(CreateView):
@@ -21,12 +22,6 @@ class PostulanteCreacion(CreateView):
         return super().form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
-class MisPostulaciones(DetailView):
-    
-    model = Postulante
-    template_name = "Postulantes/mis_postulaciones.html"
-
-@method_decorator(login_required, name='dispatch')
 class PostulanteDetalle(DetailView):
     
     model = Postulante
@@ -40,11 +35,17 @@ class PostulanteDetalle(DetailView):
         return context
 
 @method_decorator(login_required, name='dispatch')
+class MisPostulaciones(ListView):
+    
+    model = Postulante
+    template_name = "Postulantes/mis_postulaciones.html"
+
+@method_decorator(login_required, name='dispatch')
 class PostulanteUpdate(UpdateView):
     
     model = Postulante
     template_name = "Postulantes/Postulante_formulario.html"
-    success_url = "/Perfiles/miPerfil"
+    success_url = "/Postulantes/misPostulaciones"
     fields = ["telefono", "presentacion", "formacion"]
 @method_decorator(login_required, name='dispatch')
 class PostulanteDelete(DeleteView):

@@ -81,7 +81,7 @@ def editarPerfil(request):
 
     else:
 
-        miFormulario = UserEditform(initial={'email':usuario.email})
+        miFormulario = UserEditform(initial={'email':usuario.email, "username": usuario.username})
 
     return render(request, "Login/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
@@ -105,7 +105,7 @@ class MensajesDetalle(DetailView):
 class MensajesCreacion(CreateView):
     model = MensajesBlog
     template_name = "Login/mensajes_formulario.html"
-    success_url = "/Login/blogs/list"
+    success_url = "/blogs/list"
     fields = ["fecha", "titulo", "mensaje"]
 
     def form_valid(self, form):

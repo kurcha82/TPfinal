@@ -29,13 +29,13 @@
         <div class="text-center">
 
                 <br><h4>Puesto:</h4><br>
-                <h5>Posición: {{ postulante.requerido.posicion }}</h5>
-                <p>Sector: {{ postulante.requerido.sector }}</p>
-                <p>Descripción: {{ postulante.requerido.descripcion }}</p>
-                <p>Formación requerida: {{ postulante.requerido.formacionReq }}</p>
-                <p>Interno de la empresa: {{ postulante.requerido.deLaEmpresa }}</p>
-                <p>Propuesta monetaria: {{ postulante.requerido.propMonetaria }}</p>
-                <p>Fecha de publicación: {{ postulante.requeridos.fechaPublicacion }}</p>
+                <h5>Posición: {{ postu.requerido.posicion }}</h5>
+                <p>Sector: {{ postu.requerido.sector }}</p>
+                <p>Descripción: {{ postu.requerido.descripcion }}</p>
+                <p>Formación requerida: {{ postu.requerido.formacionReq }}</p>
+                <p>Interno de la empresa: {{ postu.requerido.deLaEmpresa }}</p>
+                <p>Propuesta monetaria: {{ postu.requerido.propMonetaria }}</p>
+                <p>Fecha de publicación: {{ postu.requeridos.fechaPublicacion }}</p>
                 <h3>Mi informacion:</h3>
                 <p>Formación: {{postu.formacion}}</p>
                 <p>Presentación: {{postu.presentacion}}</p>
@@ -49,7 +49,7 @@
 </ul>
 
 {% endfor %}
+<ul><a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a></ul>
 
-<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a>
 
 {%  endblock %}

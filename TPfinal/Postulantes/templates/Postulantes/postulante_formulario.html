@@ -22,12 +22,14 @@
 
         {{form.as_p}}
 
-        <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="CARGAR POSTULANTE"/>
+        <p>
+                <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="CARGAR POSTULANTE"/>
+                <a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="javascript:history.back(-1);">Cancelar</a>
+        </p>
 
 </ul>
 
 </form>
 
-<a style="width: 190px;" class="btn btn-primary btn-xl text-uppercase" href="{% url 'MiPerfil' %}">Volver</a>
 
 {% endblock %}

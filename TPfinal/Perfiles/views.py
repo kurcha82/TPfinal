@@ -23,7 +23,7 @@ class AvatarCreacion(CreateView):
     
     model = Avatar
     template_name = "Perfiles/cambiar_foto.html"
-    success_url = "/Login/inicio"
+    success_url = "/Perfiles/miPerfil"
     fields = ["imagen"]
 
     def form_valid(self, form):
