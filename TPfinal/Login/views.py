@@ -58,32 +58,19 @@ def inicio(request):
 
 @login_required
 def editarPerfil(request):
-
-    usuario = request.user
+    args = {}
 
     if request.method == 'POST':
-
-        miFormulario = UserEditform(request.POST)
-
-        if miFormulario.is_valid():
-
-            informacion = miFormulario.cleaned_data
-
-            usuario.email = informacion['email']
-            usuario.password1 = informacion['password1']
-            usuario.password2 = informacion['password2']
-
-            usuario.save()
-            
-            messages.add_message(request=request, level=messages.SUCCESS, message="Perfil actualizado con éxito")
-
-            return render(request, "Login/inicio.html")
-
+        form = UserEditForm(request.POST)
+        if form.is_valid():
+            form.actual_user = request.user
+            form.save()
+        return render(request, 'Login/inicio.html')
     else:
+        form = UserEditForm()
 
-        miFormulario = UserEditform(initial={'email':usuario.email, "username": usuario.username})
-
-    return render(request, "Login/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+        args['form'] = form
+    return render(request, 'Login/editarPerfil.html', args)
 
 def about(request):
 
